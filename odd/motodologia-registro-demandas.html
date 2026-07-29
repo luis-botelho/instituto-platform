@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodologia do Registro de Demandas | Observatório Mambucaba</title>
+
+<style>
+:root{
+--azul:#0B1F3A;
+--azul2:#123B66;
+--laranja:#F28C28;
+--fundo:#F4F6F8;
+--texto:#1F2933;
+--branco:#FFFFFF;
+--verde:#1B7F5C;
+--cinza:#E5E7EB;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--fundo);
+color:var(--texto);
+line-height:1.7;
+}
+
+header{
+background:var(--azul);
+color:white;
+padding:18px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo h1{
+font-size:24px;
+color:white !important;
+}
+
+.logo span{
+color:var(--laranja);
+font-size:14px;
+display:block;
+margin-top:3px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:16px;
+font-size:14px;
+font-weight:bold;
+}
+
+.btn-menu{
+background:var(--laranja);
+padding:9px 14px;
+border-radius:8px;
+}
+
+.hero{
+background:linear-gradient(135deg,#082347,#0F4C81);
+color:white;
+padding:78px 6%;
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:34px;
+align-items:center;
+}
+
+.hero h2{
+font-size:42px;
+line-height:1.15;
+margin-bottom:18px;
+color:white !important;
+text-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+
+.hero p{
+font-size:18px;
+color:#E5E7EB;
+margin-bottom:24px;
+max-width:780px;
+}
+
+.hero-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.18);
+border-radius:20px;
+padding:30px;
+}
+
+.hero-card h3{
+color:var(--laranja);
+font-size:24px;
+margin-bottom:12px;
+}
+
+.hero-card p{
+color:white;
+font-size:16px;
+margin-bottom:0;
+}
+
+.buttons a{
+display:inline-block;
+padding:13px 20px;
+margin:6px 8px 6px 0;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.btn-primary{
+background:var(--laranja);
+color:white;
+}
+
+.btn-secondary{
+background:white;
+color:var(--azul);
+}
+
+section{
+padding:55px 6%;
+}
+
+.container{
+max-width:1120px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:35px;
+}
+
+.section-title h2{
+font-size:32px;
+color:var(--azul);
+margin-bottom:10px;
+}
+
+.section-title p{
+max-width:850px;
+margin:auto;
+font-size:17px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 7px 20px rgba(0,0,0,.08);
+border-top:5px solid var(--laranja);
+margin-bottom:22px;
+}
+
+.card h3{
+color:var(--azul);
+font-size:24px;
+margin-bottom:14px;
+}
+
+.card p{
+margin-bottom:14px;
+font-size:16px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+}
+
+.grid-2{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:22px;
+}
+
+.small-card{
+background:white;
+padding:24px;
+border-radius:16px;
+box-shadow:0 5px 16px rgba(0,0,0,.07);
+border-left:5px solid var(--laranja);
+}
+
+.small-card h3{
+color:var(--azul);
+font-size:20px;
+margin-bottom:10px;
+}
+
+.small-card p{
+font-size:15px;
+}
+
+.dark-section{
+background:var(--azul);
+color:white;
+}
+
+.dark-section .section-title h2{
+color:white;
+}
+
+.dark-section .section-title p{
+color:#E5E7EB;
+}
+
+.dark-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.14);
+border-radius:18px;
+padding:26px;
+}
+
+.dark-card h3{
+color:var(--laranja);
+margin-bottom:10px;
+}
+
+.dark-card p,
+.dark-card li{
+color:#F3F4F6;
+}
+
+.alert{
+background:#0B1F3A;
+color:#FFFFFF;
+border-left:5px solid #F28C28;
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+}
+
+.alert strong{
+color:#F28C28;
+}
+
+.green-box{
+background:#eef8f3;
+border-left:5px solid var(--verde);
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+color:var(--azul);
+}
+
+ul{
+padding-left:22px;
+margin-top:10px;
+}
+
+li{
+margin-bottom:8px;
+}
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-top:25px;
+}
+
+.step{
+background:white;
+padding:24px;
+border-radius:16px;
+box-shadow:0 5px 16px rgba(0,0,0,.07);
+text-align:center;
+}
+
+.step strong{
+display:block;
+background:var(--laranja);
+color:white;
+width:42px;
+height:42px;
+line-height:42px;
+border-radius:50%;
+margin:0 auto 12px;
+font-size:20px;
+}
+
+.step h3{
+color:var(--azul);
+font-size:18px;
+margin-bottom:8px;
+}
+
+.example{
+background:#F8FAFC;
+border-left:5px solid var(--verde);
+padding:20px;
+border-radius:12px;
+margin-top:15px;
+}
+
+.example h4{
+color:var(--azul);
+font-size:18px;
+margin-bottom:10px;
+}
+
+.flow{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 7px 20px rgba(0,0,0,.08);
+text-align:center;
+border-top:5px solid var(--verde);
+}
+
+.flow span{
+display:block;
+font-size:20px;
+font-weight:bold;
+color:var(--azul);
+margin:10px 0;
+}
+
+.flow .arrow{
+font-size:26px;
+color:var(--laranja);
+font-weight:bold;
+}
+
+.cta{
+background:linear-gradient(135deg,var(--laranja),#ffb347);
+color:var(--azul);
+border-radius:22px;
+padding:45px;
+text-align:center;
+max-width:1050px;
+margin:auto;
+}
+
+.cta h2{
+font-size:32px;
+margin-bottom:12px;
+color:var(--azul);
+}
+
+.cta p{
+font-size:18px;
+margin-bottom:20px;
+}
+
+.cta a{
+display:inline-block;
+background:var(--azul);
+color:white;
+padding:14px 22px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin:5px;
+}
+
+.link-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.link-list a{
+display:block;
+background:white;
+padding:18px;
+border-radius:14px;
+text-decoration:none;
+font-weight:bold;
+color:var(--azul);
+border-left:5px solid var(--laranja);
+box-shadow:0 5px 14px rgba(0,0,0,.06);
+}
+
+footer{
+background:#071629;
+color:white;
+padding:40px 6%;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px;
+}
+
+footer h3{
+color:var(--laranja) !important;
+margin-bottom:12px;
+}
+
+footer a{
+color:white;
+display:block;
+text-decoration:none;
+margin-bottom:8px;
+font-size:14px;
+}
+
+.copyright{
+background:#04101f;
+color:#ccc;
+text-align:center;
+padding:13px;
+font-size:13px;
+}
+
+@media(max-width:900px){
+.hero,
+.grid,
+.grid-2,
+.timeline,
+.link-list,
+footer{
+grid-template-columns:1fr;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+display:inline-block;
+margin:5px 8px 5px 0;
+}
+
+.hero{
+padding:55px 6%;
+}
+
+.hero h2{
+font-size:34px;
+}
+
+section{
+padding:45px 6%;
+}
+}
+
+@media(max-width:520px){
+header{
+position:relative;
+}
+
+.logo h1{
+font-size:28px;
+}
+
+.logo span{
+font-size:15px;
+line-height:1.45;
+margin-top:8px;
+}
+
+nav a{
+font-size:15px;
+}
+
+.hero h2{
+font-size:31px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.buttons a{
+display:block;
+width:100%;
+text-align:center;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<h1>ICPT</h1>
+<span>Observatório de Políticas Públicas – Um Olhar sobre Mambucaba</span>
+</div>
+
+<nav>
+<a href="https://observatoriomambucaba.com.br/">Início</a>
+<a href="#conceito">O que é</a>
+<a href="#funcionamento">Como funciona</a>
+<a href="#ia">Uso da IA</a>
+<a href="#limites">Limites</a>
+<a href="#participar" class="btn-menu">Participar</a>
+</nav>
+</header>
+
+<main>
+
+<section class="hero">
+<div>
+<h2>Metodologia do Registro de Demandas</h2>
+
+<p>
+Entenda como o Observatório Mambucaba utiliza inteligência artificial para apoiar a participação cidadã, organizar relatos populares, orientar encaminhamentos e fortalecer o controle social no território.
+</p>
+
+<div class="buttons">
+<a href="https://observatoriomambucaba.com.br/#participe" class="btn-primary">📢 Registrar uma Demanda</a>
+<a href="https://observatoriomambucaba.com.br/sobre-o-observatorio-3/" class="btn-secondary">ℹ️ Sobre o Observatório</a>
+<a href="https://observatoriomambucaba.com.br/painel-interativo/" class="btn-secondary">📊 Painel Interativo</a>
+<a href="https://observatoriomambucaba.com.br/relatorio-orcamentario/" class="btn-secondary">📄 Relatório Orçamentário</a>
+</div>
+</div>
+
+<div class="hero-card">
+<h3>Do relato popular ao pedido técnico</h3>
+<p>
+A ferramenta foi criada para reduzir a distância entre a linguagem cotidiana dos moradores e a linguagem administrativa utilizada pelos órgãos públicos.
+</p>
+</div>
+</section>
+
+<section id="conceito">
+<div class="container">
+
+<div class="section-title">
+<h2>O que é o Registro de Demandas?</h2>
+<p>
+É uma ferramenta de participação cidadã assistida por inteligência artificial.
+</p>
+</div>
+
+<div class="card">
+<h3>Definição</h3>
+<p>
+O Registro de Demandas é uma ferramenta desenvolvida pelo Observatório Mambucaba para auxiliar moradores, trabalhadores, estudantes, lideranças comunitárias e demais cidadãos a organizarem relatos sobre problemas, sugestões, denúncias, elogios e observações relacionadas ao território.
+</p>
+
+<p>
+A ferramenta utiliza inteligência artificial como apoio à redação, classificação e organização das informações. Seu objetivo é aproximar a população dos mecanismos de participação social e dos canais oficiais da administração pública.
+</p>
+
+<div class="alert">
+<strong>⚠️ Importante</strong>
+<br><br>
+O Registro de Demandas não substitui a Ouvidoria, a Prefeitura, o Ministério Público, a Defensoria ou qualquer órgão público. Ele funciona como ferramenta de apoio para organizar melhor a manifestação do cidadão.
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Por que essa ferramenta foi criada?</h2>
+<p>
+Muitas pessoas sabem que existe um problema, mas não sabem como transformar esse relato em um pedido compreensível para a administração pública.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="small-card">
+<h3>Problema cotidiano</h3>
+<p>O morador sabe que a rua alaga, que falta médico, que uma obra parou ou que um serviço não funciona bem.</p>
+</div>
+
+<div class="small-card">
+<h3>Dificuldade técnica</h3>
+<p>Muitas vezes a pessoa não sabe qual órgão procurar, que linguagem usar ou que informações incluir no pedido.</p>
+</div>
+
+<div class="small-card">
+<h3>Apoio do Observatório</h3>
+<p>A ferramenta ajuda a organizar a demanda, converter o relato em texto técnico e orientar o encaminhamento adequado.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="funcionamento" class="dark-section">
+<div class="container">
+
+<div class="section-title">
+<h2>Como funciona?</h2>
+<p>
+O processo possui seis etapas principais.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="dark-card">
+<h3>1. Relato popular</h3>
+<p>
+O cidadão descreve o problema utilizando suas próprias palavras.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>2. Identificação do tema</h3>
+<p>
+A demanda é relacionada a temas como saúde, educação, obras, drenagem, assistência social, mobilidade, meio ambiente ou defesa civil.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>3. Conversão técnica</h3>
+<p>
+A inteligência artificial auxilia na transformação do relato em um texto mais estruturado e adequado ao diálogo com órgãos públicos.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>4. Classificação territorial</h3>
+<p>
+A demanda pode ser associada a bairro, rua, equipamento público, serviço público ou região específica do território.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>5. Orientação de encaminhamento</h3>
+<p>
+A ferramenta indica possíveis canais oficiais, como Ouvidoria, Portal da Transparência, Secretaria Executiva, Saúde, Defesa Civil ou outros órgãos competentes.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>6. Controle social</h3>
+<p>
+As demandas registradas podem subsidiar diagnósticos, mapas, relatórios, indicadores e pesquisas produzidas pelo Observatório.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Exemplo prático</h2>
+<p>
+Veja como um relato simples pode ser convertido em linguagem técnica.
+</p>
+</div>
+
+<div class="grid-2">
+
+<div class="card">
+<h3>Relato original</h3>
+<div class="example">
+<h4>Linguagem popular</h4>
+<p>
+"A rua alaga toda vez que chove e ninguém resolve."
+</p>
+</div>
+</div>
+
+<div class="card">
+<h3>Texto estruturado</h3>
+<div class="example">
+<h4>Linguagem técnica</h4>
+<p>
+Solicita-se avaliação das condições de drenagem urbana da localidade, considerando recorrentes episódios de alagamento durante períodos de chuva, com possíveis impactos à mobilidade, segurança e qualidade de vida da população residente.
+</p>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="ia">
+<div class="container">
+
+<div class="section-title">
+<h2>O que a inteligência artificial faz?</h2>
+<p>
+A IA é usada como apoio à organização das informações, não como substituta da análise humana.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="small-card">
+<h3>✅ Organiza informações</h3>
+<p>Ajuda a estruturar o relato em partes mais claras e compreensíveis.</p>
+</div>
+
+<div class="small-card">
+<h3>✅ Auxilia na redação</h3>
+<p>Transforma linguagem cotidiana em uma redação mais adequada para pedidos formais.</p>
+</div>
+
+<div class="small-card">
+<h3>✅ Identifica temas</h3>
+<p>Ajuda a relacionar a demanda com áreas como saúde, educação, obras, drenagem ou defesa civil.</p>
+</div>
+
+<div class="small-card">
+<h3>✅ Sugere encaminhamentos</h3>
+<p>Indica canais públicos que podem ser mais adequados para cada tipo de demanda.</p>
+</div>
+
+<div class="small-card">
+<h3>✅ Apoia a sistematização</h3>
+<p>Contribui para organizar dados que futuramente podem compor relatórios, mapas e indicadores.</p>
+</div>
+
+<div class="small-card">
+<h3>✅ Facilita o controle social</h3>
+<p>Ajuda o cidadão a participar com mais clareza, segurança e objetividade.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="limites" class="dark-section">
+<div class="container">
+
+<div class="section-title">
+<h2>O que a inteligência artificial não faz?</h2>
+<p>
+A ferramenta possui limites claros para proteger o cidadão e o Observatório.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="dark-card">
+<h3>❌ Não substitui órgãos públicos</h3>
+<p>A IA não substitui Prefeitura, Ouvidoria, secretarias, Ministério Público, Defensoria ou qualquer órgão oficial.</p>
+</div>
+
+<div class="dark-card">
+<h3>❌ Não presta assistência jurídica</h3>
+<p>A ferramenta não substitui advogado, Defensoria Pública ou orientação jurídica especializada.</p>
+</div>
+
+<div class="dark-card">
+<h3>❌ Não garante solução</h3>
+<p>O Observatório pode orientar, mas não pode garantir resposta, prazo, decisão administrativa ou execução de serviços públicos.</p>
+</div>
+
+<div class="dark-card">
+<h3>❌ Não protocola automaticamente</h3>
+<p>O protocolo oficial deve ser realizado pelo cidadão nos canais públicos competentes.</p>
+</div>
+
+<div class="dark-card">
+<h3>❌ Não decide pelo Observatório</h3>
+<p>A IA apoia a redação e organização, mas decisões institucionais dependem de análise humana.</p>
+</div>
+
+<div class="dark-card">
+<h3>❌ Não comprova fatos sozinha</h3>
+<p>Relatos precisam ser analisados, contextualizados e, quando possível, acompanhados de evidências.</p>
+</div>
+
+</div>
+
+<div class="alert">
+<strong>⚠️ Regra institucional</strong>
+<br><br>
+As respostas geradas possuem caráter orientativo. O cidadão deve verificar as informações antes de utilizá-las e, quando necessário, consultar diretamente os órgãos públicos competentes.
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Fluxo simplificado</h2>
+<p>
+O Registro de Demandas transforma participação cidadã em informação organizada.
+</p>
+</div>
+
+<div class="flow">
+<span>Cidadão</span>
+<div class="arrow">↓</div>
+<span>Relato Popular</span>
+<div class="arrow">↓</div>
+<span>Classificação por Tema e Território</span>
+<div class="arrow">↓</div>
+<span>Inteligência Artificial</span>
+<div class="arrow">↓</div>
+<span>Conversão Técnica</span>
+<div class="arrow">↓</div>
+<span>Orientação de Encaminhamento</span>
+<div class="arrow">↓</div>
+<span>Controle Social</span>
+<div class="arrow">↓</div>
+<span>Produção de Conhecimento Territorial</span>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Compromissos metodológicos</h2>
+<p>
+O Observatório adota princípios para proteger a credibilidade da ferramenta.
+</p>
+</div>
+
+<div class="grid-2">
+
+<div class="card">
+<h3>Transparência</h3>
+<p>
+O Observatório deve deixar claro quando uma informação vem de relato popular, quando vem de fonte oficial e quando é resultado de análise própria.
+</p>
+</div>
+
+<div class="card">
+<h3>Responsabilidade</h3>
+<p>
+Demandas sensíveis devem ser tratadas com cuidado, especialmente quando envolverem denúncia, saúde, crianças, violência, risco ou dados pessoais.
+</p>
+</div>
+
+<div class="card">
+<h3>Proteção de dados</h3>
+<p>
+As informações pessoais devem ser utilizadas apenas para as finalidades relacionadas à participação cidadã, organização da demanda e contato quando necessário.
+</p>
+</div>
+
+<div class="card">
+<h3>Revisão humana</h3>
+<p>
+A inteligência artificial auxilia o processo, mas o Observatório deve preservar a possibilidade de revisão humana em casos sensíveis ou de maior impacto institucional.
+</p>
+</div>
+
+</div>
+
+<div class="green-box">
+<strong>Compromisso público:</strong> a tecnologia deve servir para ampliar o acesso à informação, fortalecer a participação social e apoiar o diálogo entre cidadãos e instituições públicas.
+</div>
+
+</div>
+</section>
+
+<section id="participar">
+<div class="container">
+
+<div class="cta">
+<h2>Use a ferramenta de forma responsável</h2>
+<p>
+Registre sua demanda, organize seu pedido e ajude o Observatório a compreender melhor os desafios do território.
+</p>
+
+<a href="https://observatoriomambucaba.com.br/#participe">📢 Registrar uma Demanda</a>
+<a href="https://observatoriomambucaba.com.br/sobre-o-observatorio-3/">ℹ️ Sobre o Observatório</a>
+<a href="https://observatoriomambucaba.com.br/#radar">🔎 Usar o Radar</a>
+<a href="https://www.google.com/maps/d/viewer?mid=1PygHi96FwCWIbPb8KYFsKOusWCESfL8&hl=pt-BR" target="_blank">🗺️ Ver Mapa</a>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Páginas relacionadas</h2>
+<p>
+Consulte também outras páginas importantes para entender a metodologia, os dados e as regras do Observatório.
+</p>
+</div>
+
+<div class="link-list">
+
+<a href="https://observatoriomambucaba.com.br/">🏠 Central do Observatório</a>
+
+<a href="https://observatoriomambucaba.com.br/sobre-o-observatorio-3/">ℹ️ Sobre o Observatório</a>
+
+<a href="https://observatoriomambucaba.com.br/#radar">🔎 Radar Mambucaba</a>
+
+<a href="https://observatoriomambucaba.com.br/#participe">📢 Registrar Demanda</a>
+
+<a href="https://observatoriomambucaba.com.br/painel-interativo/">📊 Painel Interativo</a>
+
+<a href="https://observatoriomambucaba.com.br/relatorio-orcamentario/">📄 Relatório Orçamentário</a>
+
+<a href="https://www.google.com/maps/d/viewer?mid=1PygHi96FwCWIbPb8KYFsKOusWCESfL8&hl=pt-BR" target="_blank">🗺️ Mapa Territorial</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-uso-da-inteligencia-artificial/">🤖 Política de IA</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-privacidade/">🔒 Política de Privacidade</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-cookies/">🍪 Política de Cookies</a>
+
+<a href="https://observatoriomambucaba.com.br/termos-de-uso/">📜 Termos de Uso</a>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+
+<div>
+<h3>ICPT / Observatório Mambucaba</h3>
+<p>
+Instituto Cidadania e Políticas Territoriais.<br>
+Observatório de Políticas Públicas – Um Olhar sobre Mambucaba.
+</p>
+</div>
+
+<div>
+<h3>Institucional</h3>
+<a href="https://observatoriomambucaba.com.br/sobre-o-observatorio-3/">Sobre o Observatório</a>
+<a href="https://observatoriomambucaba.com.br/metodologia-do-registro-de-demandas/">Metodologia do Registro de Demandas</a>
+<a href="https://observatoriomambucaba.com.br/politica-de-uso-da-inteligencia-artificial/">Política de IA</a>
+<a href="https://observatoriomambucaba.com.br/termos-de-uso/">Termos de Uso</a>
+</div>
+
+<div>
+<h3>Proteção de Dados</h3>
+<a href="https://observatoriomambucaba.com.br/politica-de-privacidade/">Política de Privacidade</a>
+<a href="https://observatoriomambucaba.com.br/politica-de-cookies/">Política de Cookies</a>
+<a href="https://observatoriomambucaba.com.br/#participe">Participe</a>
+<a href="https://transparencia.angra.rj.gov.br/ouvidoria" target="_blank">Ouvidoria Oficial</a>
+</div>
+
+</footer>
+
+<div class="copyright">
+© 2026 ICPT – Instituto Cidadania e Políticas Territoriais. Todos os direitos reservados.
+</div>
+
+</body>
+</html>

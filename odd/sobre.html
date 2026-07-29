@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre o Observatório Mambucaba | ICPT</title>
+
+<style>
+:root{
+--azul:#0B1F3A;
+--azul2:#123B66;
+--laranja:#F28C28;
+--fundo:#F4F6F8;
+--texto:#1F2933;
+--branco:#FFFFFF;
+--verde:#1B7F5C;
+--cinza:#E5E7EB;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--fundo);
+color:var(--texto);
+line-height:1.7;
+}
+
+header{
+background:var(--azul);
+color:white;
+padding:18px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo h1{
+font-size:24px;
+color:white !important;
+}
+
+.logo span{
+color:var(--laranja);
+font-size:14px;
+display:block;
+margin-top:3px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:16px;
+font-size:14px;
+font-weight:bold;
+}
+
+.btn-menu{
+background:var(--laranja);
+padding:9px 14px;
+border-radius:8px;
+}
+
+.hero{
+background:linear-gradient(135deg,#082347,#0F4C81);
+color:white;
+padding:78px 6%;
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:34px;
+align-items:center;
+}
+
+.hero h2{
+font-size:42px;
+line-height:1.15;
+margin-bottom:18px;
+color:white !important;
+text-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+
+.hero p{
+font-size:18px;
+color:#E5E7EB;
+margin-bottom:24px;
+max-width:780px;
+}
+
+.hero-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.18);
+border-radius:20px;
+padding:30px;
+}
+
+.hero-card h3{
+color:var(--laranja);
+font-size:24px;
+margin-bottom:12px;
+}
+
+.hero-card p{
+color:white;
+font-size:16px;
+margin-bottom:0;
+}
+
+.buttons a{
+display:inline-block;
+padding:13px 20px;
+margin:6px 8px 6px 0;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.btn-primary{
+background:var(--laranja);
+color:white;
+}
+
+.btn-secondary{
+background:white;
+color:var(--azul);
+}
+
+section{
+padding:55px 6%;
+}
+
+.container{
+max-width:1120px;
+margin:auto;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:35px;
+}
+
+.section-title h2{
+font-size:32px;
+color:var(--azul);
+margin-bottom:10px;
+}
+
+.section-title p{
+max-width:820px;
+margin:auto;
+font-size:17px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 7px 20px rgba(0,0,0,.08);
+border-top:5px solid var(--laranja);
+margin-bottom:22px;
+}
+
+.card h3{
+color:var(--azul);
+font-size:24px;
+margin-bottom:14px;
+}
+
+.card p{
+margin-bottom:14px;
+font-size:16px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+}
+
+.grid-2{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:22px;
+}
+
+.small-card{
+background:white;
+padding:24px;
+border-radius:16px;
+box-shadow:0 5px 16px rgba(0,0,0,.07);
+border-left:5px solid var(--laranja);
+}
+
+.small-card h3{
+color:var(--azul);
+font-size:20px;
+margin-bottom:10px;
+}
+
+.small-card p{
+font-size:15px;
+}
+
+.alert{
+background:#0B1F3A;
+color:#FFFFFF;
+border-left:5px solid #F28C28;
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+}
+
+.alert strong{
+color:#F28C28;
+}
+
+.green-box{
+background:#eef8f3;
+border-left:5px solid var(--verde);
+padding:20px;
+border-radius:12px;
+margin-top:20px;
+}
+
+.dark-section{
+background:var(--azul);
+color:white;
+}
+
+.dark-section .section-title h2{
+color:white;
+}
+
+.dark-section .section-title p{
+color:#E5E7EB;
+}
+
+.dark-card{
+background:rgba(255,255,255,.08);
+border:1px solid rgba(255,255,255,.14);
+border-radius:18px;
+padding:26px;
+}
+
+.dark-card h3{
+color:var(--laranja);
+margin-bottom:10px;
+}
+
+.dark-card p,
+.dark-card li{
+color:#F3F4F6;
+}
+
+ul{
+padding-left:22px;
+margin-top:10px;
+}
+
+li{
+margin-bottom:8px;
+}
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-top:25px;
+}
+
+.step{
+background:white;
+padding:22px;
+border-radius:16px;
+box-shadow:0 5px 16px rgba(0,0,0,.07);
+text-align:center;
+}
+
+.step strong{
+display:block;
+background:var(--laranja);
+color:white;
+width:42px;
+height:42px;
+line-height:42px;
+border-radius:50%;
+margin:0 auto 12px;
+font-size:20px;
+}
+
+.step h3{
+color:var(--azul);
+font-size:17px;
+margin-bottom:8px;
+}
+
+.cta{
+background:linear-gradient(135deg,var(--laranja),#ffb347);
+color:var(--azul);
+border-radius:22px;
+padding:45px;
+text-align:center;
+max-width:1050px;
+margin:auto;
+}
+
+.cta h2{
+font-size:32px;
+margin-bottom:12px;
+color:var(--azul);
+}
+
+.cta p{
+font-size:18px;
+margin-bottom:20px;
+}
+
+.cta a{
+display:inline-block;
+background:var(--azul);
+color:white;
+padding:14px 22px;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+margin:5px;
+}
+
+.link-list{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+}
+
+.link-list a{
+display:block;
+background:white;
+padding:18px;
+border-radius:14px;
+text-decoration:none;
+font-weight:bold;
+color:var(--azul);
+border-left:5px solid var(--laranja);
+box-shadow:0 5px 14px rgba(0,0,0,.06);
+}
+
+footer{
+background:#071629;
+color:white;
+padding:40px 6%;
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px;
+}
+
+footer h3{
+color:var(--laranja) !important;
+margin-bottom:12px;
+}
+
+footer a{
+color:white;
+display:block;
+text-decoration:none;
+margin-bottom:8px;
+font-size:14px;
+}
+
+.copyright{
+background:#04101f;
+color:#ccc;
+text-align:center;
+padding:13px;
+font-size:13px;
+}
+
+@media(max-width:900px){
+.hero,
+.grid,
+.grid-2,
+.timeline,
+.link-list,
+footer{
+grid-template-columns:1fr;
+}
+
+nav{
+margin-top:15px;
+}
+
+nav a{
+display:inline-block;
+margin:5px 8px 5px 0;
+}
+
+.hero h2{
+font-size:34px;
+}
+
+.hero{
+padding:55px 6%;
+}
+
+section{
+padding:45px 6%;
+}
+}
+
+@media(max-width:520px){
+header{
+position:relative;
+}
+
+.logo h1{
+font-size:28px;
+}
+
+.logo span{
+font-size:15px;
+line-height:1.45;
+margin-top:8px;
+}
+
+nav a{
+font-size:15px;
+}
+
+hero h2{
+font-size:31px;
+}
+
+.hero h2{
+font-size:31px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.buttons a{
+display:block;
+width:100%;
+text-align:center;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<h1>ICPT</h1>
+<span>Observatório de Políticas Públicas – Um Olhar sobre Mambucaba</span>
+</div>
+
+<nav>
+<a href="https://observatoriomambucaba.com.br/">Início</a>
+<a href="#quem-somos">Quem Somos</a>
+<a href="#ferramentas">Ferramentas</a>
+<a href="#radar">Radar</a>
+<a href="#demanda">Registrar Demanda</a>
+<a href="#participar" class="btn-menu">Participar</a>
+</nav>
+</header>
+
+<main>
+
+<section class="hero">
+<div>
+<h2>Sobre o Observatório Mambucaba</h2>
+
+<p>
+O Observatório de Políticas Públicas – Um Olhar sobre Mambucaba é uma iniciativa do Instituto Cidadania e Políticas Territoriais (ICPT), criada para produzir conhecimento territorial, fortalecer a participação cidadã e acompanhar políticas públicas no Parque Mambucaba e no 4º Distrito de Angra dos Reis.
+</p>
+
+<div class="buttons">
+<a href="https://observatoriomambucaba.com.br/#participe" class="btn-primary">📢 Registrar uma demanda</a>
+<a href="https://observatoriomambucaba.com.br/#radar" class="btn-secondary">🔎 Usar o Radar</a>
+<a href="https://observatoriomambucaba.com.br/painel-interativo/" class="btn-secondary">📊 Painel Interativo</a>
+<a href="https://observatoriomambucaba.com.br/relatorio-orcamentario/" class="btn-secondary">📄 Relatório Orçamentário</a>
+</div>
+</div>
+
+<div class="hero-card">
+<h3>Dados, território e participação cidadã</h3>
+<p>
+O Observatório combina pesquisa em fontes oficiais, mapa territorial, relatórios, orçamento público, escuta cidadã e inteligência artificial para aproximar a população dos documentos, direitos, serviços e decisões públicas.
+</p>
+</div>
+</section>
+
+<section id="quem-somos">
+<div class="container">
+
+<div class="section-title">
+<h2>Quem somos</h2>
+<p>
+Somos uma iniciativa territorial dedicada à produção de informação pública, leitura crítica das políticas públicas e fortalecimento da participação social.
+</p>
+</div>
+
+<div class="card">
+<h3>O que é o Observatório Mambucaba?</h3>
+<p>
+O Observatório Mambucaba é uma plataforma de inteligência territorial cidadã voltada ao acompanhamento das políticas públicas, dos serviços públicos, das informações oficiais, das demandas populares e das transformações sociais do Parque Mambucaba e do 4º Distrito de Angra dos Reis.
+</p>
+
+<p>
+Ele atua como espaço de pesquisa, organização de dados, educação cidadã, transparência pública, monitoramento territorial e apoio ao controle social. Sua função é transformar informações dispersas em conhecimento acessível, útil e territorializado.
+</p>
+
+<div class="alert">
+<strong>Importante:</strong> o Observatório não é órgão público, não substitui a Prefeitura, a Ouvidoria, o Ministério Público, a Defensoria ou qualquer canal oficial. Seu papel é orientar, organizar informações, produzir análises e fortalecer a participação cidadã.
+</div>
+</div>
+
+<div class="card">
+<h3>O que é o ICPT?</h3>
+<p>
+O Instituto Cidadania e Políticas Territoriais (ICPT) é a organização responsável pela estruturação institucional do Observatório. O ICPT nasce com o objetivo de promover cidadania, participação social, formação popular, pesquisa aplicada, inteligência territorial e acompanhamento das políticas públicas.
+</p>
+
+<p>
+O Observatório de Políticas Públicas – Um Olhar sobre Mambucaba é o núcleo territorial do ICPT voltado prioritariamente ao Parque Mambucaba e ao 4º Distrito.
+</p>
+</div>
+
+</div>
+</section>
+
+<section id="missao" class="dark-section">
+<div class="container">
+
+<div class="section-title">
+<h2>Missão, visão e valores</h2>
+<p>
+O Observatório se orienta por princípios de transparência, ética, participação social e compromisso com o território.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="dark-card">
+<h3>🎯 Missão</h3>
+<p>
+Produzir conhecimento territorial, facilitar o acesso a informações públicas, fortalecer a participação cidadã e contribuir para o aperfeiçoamento das políticas públicas no Parque Mambucaba e no 4º Distrito de Angra dos Reis.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>🔭 Visão</h3>
+<p>
+Ser uma referência em inteligência territorial cidadã, transparência pública, controle social, pesquisa em fontes oficiais e inovação comunitária aplicada às políticas públicas.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>🤝 Compromisso</h3>
+<p>
+Atuar de forma ética, técnica, independente e colaborativa, sempre buscando transformar dados, documentos, relatos e experiências populares em informação pública qualificada.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="ferramentas">
+<div class="container">
+
+<div class="section-title">
+<h2>Nossas ferramentas</h2>
+<p>
+O Observatório organiza diferentes ferramentas. Cada uma possui uma função específica dentro da plataforma.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="small-card">
+<h3>🔎 Radar Mambucaba</h3>
+<p>
+Ferramenta de busca e monitoramento de informações públicas em fontes oficiais, incluindo documentos, contratos, licitações, leis, orçamento público e conteúdos administrativos.
+</p>
+</div>
+
+<div class="small-card">
+<h3>📢 Registrar uma Demanda</h3>
+<p>
+Canal de participação cidadã que permite ao morador relatar problemas, sugestões, denúncias, elogios e observações territoriais, com apoio de inteligência artificial para conversão técnica.
+</p>
+</div>
+
+<div class="small-card">
+<h3>📊 Painel Interativo</h3>
+<p>
+Ambiente visual para acompanhar dados, orçamento público, indicadores territoriais e análises sobre políticas públicas no território.
+</p>
+</div>
+
+<div class="small-card">
+<h3>📄 Relatórios e pesquisas</h3>
+<p>
+Produção de relatórios, diagnósticos e análises sobre saúde, orçamento, enchentes, equipamentos públicos, obras e outros temas relevantes.
+</p>
+</div>
+
+<div class="small-card">
+<h3>🗺️ Mapa Territorial</h3>
+<p>
+Mapa colaborativo com equipamentos públicos, áreas de enchente, obras, demandas, serviços, referências territoriais e informações do 4º Distrito.
+</p>
+</div>
+
+<div class="small-card">
+<h3>📚 Biblioteca Digital</h3>
+<p>
+Organização de documentos públicos, leis, relatórios, artigos, diagnósticos e fontes úteis para pesquisa, formação cidadã e controle social.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Nossos valores</h2>
+<p>
+Os valores orientam a forma como coletamos informações, produzimos análises, tratamos demandas e dialogamos com a comunidade.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="small-card">
+<h3>Transparência</h3>
+<p>Defendemos o acesso público às informações e a clareza sobre orçamento, serviços, obras, programas e decisões governamentais.</p>
+</div>
+
+<div class="small-card">
+<h3>Participação</h3>
+<p>Valorizamos a escuta dos moradores, lideranças, trabalhadores, estudantes, pesquisadores e coletivos do território.</p>
+</div>
+
+<div class="small-card">
+<h3>Evidência</h3>
+<p>Buscamos trabalhar com dados, documentos, registros, relatos organizados e fontes verificáveis.</p>
+</div>
+
+<div class="small-card">
+<h3>Ética</h3>
+<p>Tratamos informações com responsabilidade, cuidado, respeito às pessoas e atenção à proteção de dados.</p>
+</div>
+
+<div class="small-card">
+<h3>Independência</h3>
+<p>O Observatório não atua como partido, governo ou grupo eleitoral. Sua referência é o interesse público e o direito à cidade.</p>
+</div>
+
+<div class="small-card">
+<h3>Inovação</h3>
+<p>Usamos tecnologia, inteligência artificial, mapas, painéis e metodologias digitais para ampliar o controle social.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="radar">
+<div class="container">
+
+<div class="section-title">
+<h2>Como funciona o Radar Mambucaba</h2>
+<p>
+O Radar Mambucaba é a porta de entrada para pesquisar informações públicas e oficiais sobre o território.
+</p>
+</div>
+
+<div class="timeline">
+
+<div class="step">
+<strong>1</strong>
+<h3>Pesquisa Guiada</h3>
+<p>O usuário busca temas como LOA, contratos, licitações, saúde, obras, drenagem, orçamento e Secretaria Executiva.</p>
+</div>
+
+<div class="step">
+<strong>2</strong>
+<h3>Fontes Oficiais</h3>
+<p>A busca é orientada para portais oficiais, documentos públicos, transparência municipal, legislação e canais institucionais.</p>
+</div>
+
+<div class="step">
+<strong>3</strong>
+<h3>Organização</h3>
+<p>As informações encontradas podem ser usadas para análises, relatórios, acompanhamento de políticas públicas e controle social.</p>
+</div>
+
+<div class="step">
+<strong>4</strong>
+<h3>Conhecimento</h3>
+<p>O Radar ajuda a transformar documentos dispersos em informação útil para moradores, pesquisadores e lideranças comunitárias.</p>
+</div>
+
+</div>
+
+<div class="green-box">
+<strong>Definição oficial:</strong> o Radar Mambucaba é uma ferramenta de busca e monitoramento de informações públicas em fontes oficiais. Ele não é o formulário de demandas. O formulário de demandas é uma ferramenta própria de participação cidadã, explicada abaixo.
+</div>
+
+</div>
+</section>
+
+<section id="demanda" class="dark-section">
+<div class="container">
+
+<div class="section-title">
+<h2>Como funciona o Registro de Demandas</h2>
+<p>
+Esta é a ferramenta de participação cidadã que utiliza inteligência artificial para apoiar a conversão técnica dos relatos populares.
+</p>
+</div>
+
+<div class="grid">
+
+<div class="dark-card">
+<h3>1. Relato popular</h3>
+<p>
+O morador descreve um problema, sugestão, reclamação, denúncia, elogio ou observação territorial em linguagem simples.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>2. Classificação</h3>
+<p>
+A demanda é organizada por tema, localidade, tipo de manifestação e referência territorial.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>3. Conversão técnica</h3>
+<p>
+Com apoio de inteligência artificial, o relato é convertido em uma linguagem mais adequada para diálogo com a administração pública.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>4. Pedido estruturado</h3>
+<p>
+A ferramenta gera um texto de pedido, orientação técnica e perguntas que podem ser usadas no encaminhamento aos órgãos responsáveis.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>5. Encaminhamento orientado</h3>
+<p>
+O cidadão recebe orientação para acessar canais oficiais, como Ouvidoria, Portal da Transparência, Secretaria Executiva, Defesa Civil ou outros órgãos competentes.
+</p>
+</div>
+
+<div class="dark-card">
+<h3>6. Inteligência territorial</h3>
+<p>
+As demandas registradas podem subsidiar diagnósticos, mapas, indicadores, relatórios e ações de controle social.
+</p>
+</div>
+
+</div>
+
+<div class="alert">
+<strong>Atenção:</strong> o Observatório pode orientar e organizar informações, mas o protocolo oficial da demanda deve ser feito nos canais públicos competentes. A inteligência artificial auxilia a redação e a organização do pedido, mas não substitui a análise humana nem a responsabilidade institucional.
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>O que fazemos e o que não fazemos</h2>
+<p>
+Definir claramente os limites do Observatório protege a população, a instituição e a credibilidade do trabalho.
+</p>
+</div>
+
+<div class="grid-2">
+
+<div class="card">
+<h3>O que fazemos</h3>
+<ul>
+<li>Facilitamos a busca em fontes oficiais.</li>
+<li>Organizamos dados, documentos e informações públicas.</li>
+<li>Produzimos relatórios, diagnósticos e análises territoriais.</li>
+<li>Apoiamos a conversão técnica de demandas cidadãs.</li>
+<li>Indicamos canais oficiais adequados para encaminhamentos.</li>
+<li>Fortalecemos o controle social e a participação cidadã.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>O que não fazemos</h3>
+<ul>
+<li>Não somos órgão público.</li>
+<li>Não substituímos a Ouvidoria, Prefeitura, Ministério Público ou Defensoria.</li>
+<li>Não garantimos resposta ou solução administrativa.</li>
+<li>Não prestamos assistência jurídica.</li>
+<li>Não protocolamos automaticamente em nome do cidadão.</li>
+<li>Não atuamos como instrumento partidário ou eleitoral.</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Nosso método de trabalho</h2>
+<p>
+O Observatório combina escuta popular, dados públicos, fontes oficiais, pesquisa aplicada e tecnologia.
+</p>
+</div>
+
+<div class="grid-2">
+
+<div class="card">
+<h3>Transparência assistida</h3>
+<p>
+O Radar ajuda o cidadão a pesquisar informações públicas em fontes oficiais, reduzindo a distância entre a população e documentos como contratos, licitações, leis, orçamentos e publicações administrativas.
+</p>
+</div>
+
+<div class="card">
+<h3>Participação assistida por IA</h3>
+<p>
+A ferramenta de registro de demandas utiliza inteligência artificial para transformar relatos simples em textos mais claros, estruturados e tecnicamente úteis para o controle social.
+</p>
+</div>
+
+<div class="card">
+<h3>Inteligência territorial</h3>
+<p>
+As informações não são analisadas de forma isolada. Elas são relacionadas ao território, aos equipamentos públicos, aos serviços, às obras, ao orçamento e aos problemas recorrentes do 4º Distrito.
+</p>
+</div>
+
+<div class="card">
+<h3>Uso responsável da tecnologia</h3>
+<p>
+A inteligência artificial é utilizada como apoio para organização, tradução técnica e orientação. Ela não substitui a análise humana, a validação institucional nem os canais oficiais.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="participar">
+<div class="container">
+
+<div class="cta">
+<h2>Participe do Observatório</h2>
+<p>
+A construção de um território mais justo, transparente e participativo depende da colaboração de moradores, lideranças, pesquisadores, estudantes, trabalhadores e instituições.
+</p>
+
+<a href="https://observatoriomambucaba.com.br/#radar">🔎 Usar o Radar</a>
+<a href="https://observatoriomambucaba.com.br/#participe">📢 Registrar uma demanda</a>
+<a href="https://observatoriomambucaba.com.br/painel-interativo/">📊 Ver Painel Interativo</a>
+<a href="https://observatoriomambucaba.com.br/relatorio-orcamentario/">📄 Ler Relatório</a>
+<a href="https://www.google.com/maps/d/viewer?mid=1PygHi96FwCWIbPb8KYFsKOusWCESfL8&hl=pt-BR" target="_blank">🗺️ Ver Mapa</a>
+</div>
+
+</div>
+</section>
+
+<section>
+<div class="container">
+
+<div class="section-title">
+<h2>Páginas relacionadas</h2>
+<p>
+Consulte também outras páginas importantes para entender a metodologia, o uso de dados e as regras do Observatório.
+</p>
+</div>
+
+<div class="link-list">
+
+<a href="https://observatoriomambucaba.com.br/">🏠 Central do Observatório</a>
+
+<a href="https://observatoriomambucaba.com.br/#radar">🔎 Radar Mambucaba</a>
+
+<a href="https://observatoriomambucaba.com.br/#participe">📢 Registrar Demanda</a>
+
+<a href="https://observatoriomambucaba.com.br/painel-interativo/">📊 Painel Interativo</a>
+
+<a href="https://observatoriomambucaba.com.br/relatorio-orcamentario/">📄 Relatório Orçamentário</a>
+
+<a href="https://www.google.com/maps/d/viewer?mid=1PygHi96FwCWIbPb8KYFsKOusWCESfL8&hl=pt-BR" target="_blank">🗺️ Mapa Territorial</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-privacidade/">🔒 Política de Privacidade</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-cookies/">🍪 Política de Cookies</a>
+
+<a href="https://observatoriomambucaba.com.br/termos-de-uso/">📜 Termos de Uso</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-uso-da-inteligencia-artificial/">🤖 Política de IA</a>
+
+<a href="https://observatoriomambucaba.com.br/metodologia-do-registro-de-demandas/">📍 Metodologia do Registro de Demandas</a>
+
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+
+<div>
+<h3>ICPT / Observatório Mambucaba</h3>
+<p>
+Instituto Cidadania e Políticas Territoriais.<br>
+Observatório de Políticas Públicas – Um Olhar sobre Mambucaba.
+</p>
+</div>
+
+<div>
+<h3>Institucional</h3>
+<a href="https://observatoriomambucaba.com.br/sobre-o-observatorio-3/">Sobre o Observatório</a>
+<a href="https://observatoriomambucaba.com.br/metodologia-do-registro-de-demandas/">Metodologia do Registro de Demandas</a>
+<a href="https://observatoriomambucaba.com.br/politica-de-uso-da-inteligencia-artificial/">Política de IA</a>
+<a href="https://observatoriomambucaba.com.br/termos-de-uso/">Termos de Uso</a>
+</div>
+
+<div>
+<h3>Proteção de Dados</h3>
+<a href="https://observatoriomambucaba.com.br/politica-de-privacidade/">Política de Privacidade</a>
+<a href="https://observatoriomambucaba.com.br/politica-de-cookies/">Política de Cookies</a>
+<a href="https://observatoriomambucaba.com.br/#participe">Participe</a>
+<a href="https://transparencia.angra.rj.gov.br/ouvidoria" target="_blank">Ouvidoria Oficial</a>
+</div>
+
+</footer>
+
+<div class="copyright">
+© 2026 ICPT – Instituto Cidadania e Políticas Territoriais. Todos os direitos reservados.
+</div>
+
+</body>
+</html>

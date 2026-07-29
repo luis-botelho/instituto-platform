@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório Orçamentário Territorial 2026 | Observatório Mambucaba</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body{
+      background:#faf9f6;
+      color:#333;
+      font-family:'Segoe UI',system-ui,sans-serif;
+      line-height:1.7;
+    }
+    html{scroll-behavior:smooth}
+    .bg-primary{background:#3a5a40}
+    .text-primary{color:#3a5a40}
+    .bg-accent{background:#b85d19}
+    .text-accent{color:#b85d19}
+    .border-accent{border-color:#b85d19}
+    .bg-card{background:#fff}
+    .btn-nav{
+      display:inline-block;
+      padding:12px 18px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.2s;
+    }
+    .btn-nav:hover{transform:translateY(-1px);opacity:.95}
+    .card{
+      background:#fff;
+      border-radius:16px;
+      padding:26px;
+      box-shadow:0 8px 22px rgba(0,0,0,.08);
+    }
+    .note{
+      background:#fff7ed;
+      border-left:5px solid #b85d19;
+      padding:18px;
+      border-radius:12px;
+    }
+    .green-note{
+      background:#f0f7f2;
+      border-left:5px solid #3a5a40;
+      padding:18px;
+      border-radius:12px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:#fff;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+    }
+    th{
+      background:#3a5a40;
+      color:#fff;
+      text-align:left;
+      padding:13px;
+      font-size:14px;
+    }
+    td{
+      padding:13px;
+      border-bottom:1px solid #eee;
+      vertical-align:top;
+      font-size:14px;
+    }
+    tr:nth-child(even){background:#fafafa}
+    .term{
+      background:#fff;
+      border-left:6px solid #b85d19;
+      border-radius:14px;
+      padding:20px;
+      box-shadow:0 6px 16px rgba(0,0,0,.06);
+    }
+    .term h4{
+      color:#3a5a40;
+      font-weight:800;
+      font-size:1.15rem;
+      margin-bottom:8px;
+    }
+    .toc a{
+      display:block;
+      padding:8px 0;
+      color:#3a5a40;
+      font-weight:600;
+      text-decoration:none;
+      border-bottom:1px dashed #ddd;
+    }
+    .toc a:hover{color:#b85d19}
+    .section-title{
+      color:#3a5a40;
+      font-weight:900;
+      font-size:1.9rem;
+      margin-bottom:18px;
+    }
+    .links{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px;
+      margin-top:20px;
+    }
+    .links a{
+      display:block;
+      background:white;
+      padding:18px;
+      border-radius:12px;
+      border-left:5px solid #b85d19;
+      text-decoration:none;
+      font-weight:bold;
+      color:#3a5a40;
+      box-shadow:0 5px 14px rgba(0,0,0,.06);
+    }
+    @media(max-width:800px){
+      .links{grid-template-columns:1fr;}
+    }
+    .sub-title{
+      color:#b85d19;
+      font-weight:800;
+      font-size:1.3rem;
+      margin:26px 0 12px;
+    }
+  </style>
+</head>
+
+<body class="antialiased pb-20">
+
+<nav class="bg-card shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row md:justify-between md:items-center gap-3">
+    <h1 class="text-xl font-bold text-primary whitespace-nowrap">📄 Observatório Mambucaba / ICPT</h1>
+    <div class="flex flex-wrap gap-3 text-sm font-medium">
+      <a href="#resumo" class="hover:text-accent">Resumo</a>
+      <a href="#metodologia" class="hover:text-accent">Metodologia</a>
+      <a href="#analise" class="hover:text-accent">Análise</a>
+      <a href="#dicionario" class="hover:text-accent">Dicionário</a>
+      <a href="#conclusao" class="hover:text-accent">Conclusões</a>
+      <a href="#fontes" class="hover:text-accent">Fontes</a>
+    </div>
+  </div>
+</nav>
+
+<header class="bg-primary text-white py-16 px-4">
+  <div class="max-w-5xl mx-auto text-center">
+    <span class="text-5xl mb-4 block">📊</span>
+    <p class="uppercase tracking-widest text-sm text-orange-200 font-bold mb-3">
+      Relatório Orçamentário Territorial — Versão 1.0
+    </p>
+
+    <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+      Análise da LOA 2026 de Angra dos Reis com foco no Parque Mambucaba
+    </h2>
+
+    <p class="text-xl md:text-2xl font-light text-gray-200 mb-8">
+      Previsão orçamentária, ações localizadas, transparência territorial, controle social e dicionário popular de orçamento público.
+    </p>
+
+    <div class="bg-white/20 inline-block px-6 py-4 rounded text-left max-w-3xl">
+      <p class="text-lg mb-2"><strong>Ideia central:</strong> sem previsão orçamentária não há política pública; sem execução financeira não há resultado concreto.</p>
+      <p class="text-base text-gray-100">Este relatório analisa valores previstos na LOA 2026. A execução deve ser acompanhada por empenho, liquidação e pagamento no Portal da Transparência.</p>
+    </div>
+
+    <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+      <a href="https://observatoriomambucaba.com.br/painel-interativo/" class="btn-nav bg-white text-primary">📊 Ver Painel Interativo</a>
+      <a href="https://www.google.com/maps/d/viewer?mid=1PygHi96FwCWIbPb8KYFsKOusWCESfL8&hl=pt-BR" target="_blank" class="btn-nav bg-accent text-white">🗺️ Ver Mapa Territorial</a>
+      <a href="https://observatoriomambucaba.com.br/" class="btn-nav bg-white/10 text-white border border-white/30">🏠 Voltar para a Central</a>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 mt-[-2rem] relative z-10 space-y-12">
+
+<section class="card border-t-8 border-accent">
+  <h2 class="section-title">Sumário</h2>
+  <div class="toc grid grid-cols-1 md:grid-cols-2 gap-x-8">
+    <a href="#resumo">1. Resumo Executivo</a>
+    <a href="#metodologia">2. Metodologia e Limites da Análise</a>
+    <a href="#orcamento">3. Orçamento Total de Angra em 2026</a>
+    <a href="#acoes-localizadas">4. Ações Localizadas para Mambucaba</a>
+    <a href="#gastos-area">5. Principais Gastos por Área</a>
+    <a href="#secretaria">6. Secretaria Executiva do Parque Mambucaba</a>
+    <a href="#enchentes">7. Enchentes, Rios, Drenagem e Saneamento</a>
+    <a href="#saude-educacao">8. Saúde, Educação e Assistência Social</a>
+    <a href="#dicionario">9. Dicionário do Orçamento Público</a>
+    <a href="#conclusao">10. Conclusões do Observatório</a>
+  </div>
+</section>
+
+<section id="resumo" class="card">
+  <h2 class="section-title">1. Resumo Executivo</h2>
+
+  <p class="text-lg text-gray-700 mb-4">
+    Este relatório apresenta uma leitura territorial da Lei Orçamentária Anual de Angra dos Reis para 2026, com foco no Parque Mambucaba, na Vila Histórica de Mambucaba e no 4º Distrito. O objetivo é traduzir os dados orçamentários em linguagem acessível, preservando rigor técnico e destacando o que aparece, o que não aparece e o que a população precisa acompanhar.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-6">
+    <div class="green-note">
+      <p class="text-sm uppercase font-bold text-primary">Orçamento total previsto</p>
+      <p class="text-3xl font-black text-primary">R$ 2,65 bi</p>
+      <p class="text-sm">LOA 2026 de Angra dos Reis.</p>
+    </div>
+
+    <div class="note">
+      <p class="text-sm uppercase font-bold text-accent">Ações nominalmente localizadas</p>
+      <p class="text-3xl font-black text-accent">R$ 4,129 mi</p>
+      <p class="text-sm">Valor identificado com referência direta ao território.</p>
+    </div>
+
+    <div class="green-note">
+      <p class="text-sm uppercase font-bold text-primary">Participação aproximada</p>
+      <p class="text-3xl font-black text-primary">0,16%</p>
+      <p class="text-sm">Apenas ações nominalmente identificadas.</p>
+    </div>
+  </div>
+
+  <div class="note mt-6">
+    <strong>Atenção:</strong> os valores identificados representam previsão orçamentária, não execução. Para confirmar se uma política pública saiu do papel, é necessário verificar empenho, liquidação, pagamento, contratos, medições e resultados no território.
+  </div>
+</section>
+
+<section id="metodologia" class="card">
+  <h2 class="section-title">2. Metodologia e Limites da Análise</h2>
+
+  <p class="mb-4">
+    A análise foi construída com base na leitura da LOA 2026, anexos orçamentários e documentos públicos relacionados. O levantamento priorizou termos territoriais como “Mambucaba”, “Parque Mambucaba” e “Vila Histórica de Mambucaba”.
+  </p>
+
+  <h3 class="sub-title">Critério principal</h3>
+  <p class="mb-4">
+    Foram destacadas apenas as ações que possuem referência nominal direta ao território. Isso significa que serviços públicos executados por dotações gerais, como folha de pagamento de servidores, manutenção de escolas, saúde, limpeza urbana, iluminação pública e assistência social, podem beneficiar o território, mas não aparecem de forma territorializada no orçamento.
+  </p>
+
+  <h3 class="sub-title">Regra de segurança metodológica</h3>
+  <div class="note">
+    Quando a informação não foi localizada nos documentos consultados, este relatório não presume valores. A ausência de dado é registrada como lacuna de transparência territorial.
+  </div>
+</section>
+
+<section id="orcamento" class="card">
+  <h2 class="section-title">3. Orçamento Total de Angra dos Reis em 2026</h2>
+
+  <p class="mb-4">
+    A LOA 2026 estima o orçamento total do município de Angra dos Reis em <strong>R$ 2.650.664.000,00</strong>. Esse montante representa a previsão global de receitas e despesas do município para o exercício.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Informação</th>
+        <th>Valor</th>
+        <th>Observação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Orçamento total previsto</td>
+        <td>R$ 2.650.664.000,00</td>
+        <td>Valor global estimado na LOA 2026.</td>
+      </tr>
+      <tr>
+        <td>Ações nominalmente localizadas para Mambucaba/Vila Histórica</td>
+        <td>R$ 4.129.000,00</td>
+        <td>Soma das ações territoriais identificadas.</td>
+      </tr>
+      <tr>
+        <td>Participação aproximada</td>
+        <td>0,16%</td>
+        <td>Não representa todo gasto no território; apenas o gasto nominalmente identificado.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="acoes-localizadas" class="card">
+  <h2 class="section-title">4. Ações Localizadas para Mambucaba</h2>
+
+  <p class="mb-5">
+    Foram localizadas, até esta etapa da pesquisa, quatro ações com referência nominal direta ao território. Elas indicam previsão orçamentária, mas não comprovam execução.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Ação</th>
+        <th>Valor previsto</th>
+        <th>O que deve ser acompanhado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1699</td>
+        <td>Implantação do sistema de esgotamento sanitário do Parque Mambucaba</td>
+        <td>R$ 2.005.000,00</td>
+        <td>Licitação, contrato, cronograma, empenho, liquidação e pagamento.</td>
+      </tr>
+      <tr>
+        <td>1446</td>
+        <td>Implantação de polo cultural na Vila Histórica de Mambucaba</td>
+        <td>R$ 1.250.000,00</td>
+        <td>Projeto, órgão executor, contrato, local exato e execução física.</td>
+      </tr>
+      <tr>
+        <td>1535</td>
+        <td>Pavimentação da Rua da Praia da Vila Histórica de Mambucaba</td>
+        <td>R$ 694.000,00</td>
+        <td>Edital, empresa contratada, medições e pagamento.</td>
+      </tr>
+      <tr>
+        <td>1702</td>
+        <td>Implantação de sistema de drenagem pluvial e pavimentação em diversas ruas do Parque Mambucaba</td>
+        <td>R$ 180.000,00</td>
+        <td>Quais ruas, escopo da obra, contrato, empenho e execução.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="gastos-area" class="card">
+  <h2 class="section-title">5. Principais Gastos por Área</h2>
+
+  <p class="mb-4">
+    Para compreender o orçamento, não basta olhar apenas para as ações localizadas. É necessário observar também os grandes blocos de gasto municipal. Algumas áreas possuem dotações elevadas, mas sem detalhamento territorial por bairro ou equipamento público.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Área</th>
+        <th>Valor identificado</th>
+        <th>Limitação territorial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Saúde</td>
+        <td>R$ 501.163.000,00</td>
+        <td>Não foi identificada discriminação clara por unidade ou bairro.</td>
+      </tr>
+      <tr>
+        <td>Educação</td>
+        <td>R$ 432.955.000,00</td>
+        <td>Não foi identificada discriminação clara por escola, creche ou território.</td>
+      </tr>
+      <tr>
+        <td>Assistência Social</td>
+        <td>Não consolidado nesta etapa</td>
+        <td>Não foi localizado recorte específico para CRAS ou programas do Parque Mambucaba.</td>
+      </tr>
+      <tr>
+        <td>Drenagem nominalmente localizada</td>
+        <td>R$ 180.000,00</td>
+        <td>Valor específico localizado para ação de drenagem e pavimentação no Parque Mambucaba.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note mt-6">
+    <strong>Ponto central:</strong> a ausência de transparência territorial impede saber com precisão quanto do orçamento de grandes áreas chega efetivamente ao Parque Mambucaba e ao 4º Distrito.
+  </div>
+</section>
+
+<section id="secretaria" class="card">
+  <h2 class="section-title">6. Secretaria Executiva do Parque Mambucaba</h2>
+
+  <p class="mb-4">
+    A Secretaria Executiva do Parque Mambucaba possui papel importante na presença administrativa do município no território. No entanto, nesta etapa da análise, não foi localizada dotação orçamentária autônoma e separada que indique orçamento próprio para a secretaria.
+  </p>
+
+  <div class="note">
+    <strong>Achado técnico:</strong> não foi identificada, nos documentos consultados, uma unidade orçamentária própria com dotação específica para a Secretaria Executiva do Parque Mambucaba. Isso sugere que suas despesas podem estar vinculadas a dotações gerais de outras secretarias ou órgãos municipais.
+  </div>
+
+  <h3 class="sub-title">Perguntas que devem ser feitas ao poder público</h3>
+  <ul class="list-disc pl-6 space-y-2">
+    <li>Qual é o orçamento anual de custeio da Secretaria Executiva?</li>
+    <li>Existe dotação própria ou os gastos são executados por outra secretaria?</li>
+    <li>Quais serviços podem ser resolvidos localmente sem depender do Centro?</li>
+    <li>Quais contratos atendem diretamente as demandas do território?</li>
+  </ul>
+</section>
+
+<section id="enchentes" class="card">
+  <h2 class="section-title">7. Enchentes, Rios, Drenagem e Saneamento</h2>
+
+  <p class="mb-4">
+    O Parque Mambucaba possui histórico de alagamentos e problemas de drenagem. Por isso, a análise orçamentária precisa observar se há recursos específicos para drenagem, saneamento, Rio Mambucaba, desassoreamento, Defesa Civil e macrodrenagem.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tema</th>
+        <th>O que foi localizado</th>
+        <th>Lacuna de controle social</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Esgotamento sanitário</td>
+        <td>R$ 2.005.000,00 previstos para sistema de esgotamento sanitário do Parque Mambucaba.</td>
+        <td>Falta acompanhar licitação, contrato, cronograma e execução.</td>
+      </tr>
+      <tr>
+        <td>Drenagem e pavimentação</td>
+        <td>R$ 180.000,00 previstos para drenagem pluvial e pavimentação em diversas ruas.</td>
+        <td>Falta identificar ruas contempladas e execução financeira.</td>
+      </tr>
+      <tr>
+        <td>Rio Mambucaba</td>
+        <td>Não foi localizada dotação nominal específica nesta etapa.</td>
+        <td>Falta informação sobre macrodrenagem, desassoreamento e plano de gestão de cheias.</td>
+      </tr>
+      <tr>
+        <td>Defesa Civil e prevenção</td>
+        <td>Não foi localizado recorte territorial específico nesta etapa.</td>
+        <td>Falta transparência sobre prevenção de desastres no 4º Distrito.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note mt-6">
+    A previsão de R$ 180.000,00 para drenagem deve ser analisada com atenção, pois o histórico de alagamentos sugere necessidade de intervenções estruturais de maior complexidade, como macrodrenagem, manejo de rios e planejamento de risco.
+  </div>
+</section>
+
+<section id="saude-educacao" class="card">
+  <h2 class="section-title">8. Saúde, Educação e Assistência Social</h2>
+
+  <p class="mb-4">
+    Saúde, educação e assistência social são áreas de grande impacto direto na vida cotidiana da população. No entanto, o principal problema identificado é a dificuldade de rastrear quanto das dotações globais chega especificamente ao território.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="green-note">
+      <h3 class="font-bold text-primary text-xl mb-2">Saúde</h3>
+      <p>Valor global identificado: R$ 501.163.000,00.</p>
+      <p class="mt-2 text-sm">Lacuna: não há detalhamento territorial simples por unidade do Parque Mambucaba.</p>
+    </div>
+
+    <div class="green-note">
+      <h3 class="font-bold text-primary text-xl mb-2">Educação</h3>
+      <p>Valor global identificado: R$ 432.955.000,00.</p>
+      <p class="mt-2 text-sm">Lacuna: não há detalhamento por escola, creche ou território.</p>
+    </div>
+
+    <div class="green-note">
+      <h3 class="font-bold text-primary text-xl mb-2">Assistência Social</h3>
+      <p>Valor territorial não consolidado nesta etapa.</p>
+      <p class="mt-2 text-sm">Lacuna: não foi identificado recorte específico para CRAS e serviços locais.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dicionario" class="card">
+  <h2 class="section-title">9. Dicionário do Orçamento Público</h2>
+
+  <p class="mb-6">
+    Esta seção traduz os principais termos usados no orçamento público, para que qualquer morador possa acompanhar a execução das políticas públicas.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="term">
+      <h4>LOA — Lei Orçamentária Anual</h4>
+      <p>É o orçamento do ano. Mostra quanto a Prefeitura espera arrecadar e onde está autorizada a gastar.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é a promessa financeira anual no papel.</p>
+    </div>
+
+    <div class="term">
+      <h4>PPA — Plano Plurianual</h4>
+      <p>É o planejamento de médio prazo, geralmente para quatro anos.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é o plano maior da gestão.</p>
+    </div>
+
+    <div class="term">
+      <h4>LDO — Lei de Diretrizes Orçamentárias</h4>
+      <p>É a lei que orienta a elaboração da LOA e define prioridades do ano seguinte.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é a ponte entre o plano de governo e o orçamento anual.</p>
+    </div>
+
+    <div class="term">
+      <h4>Dotação Orçamentária</h4>
+      <p>É o valor reservado no orçamento para determinada ação, obra ou serviço.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é o dinheiro separado no papel.</p>
+    </div>
+
+    <div class="term">
+      <h4>Empenho</h4>
+      <p>É quando a Prefeitura assume formalmente o compromisso de pagar uma despesa.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> contratou ou reservou oficialmente o dinheiro.</p>
+    </div>
+
+    <div class="term">
+      <h4>Liquidação</h4>
+      <p>É quando a Prefeitura reconhece que a obra, serviço ou entrega foi realizada conforme contratado.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> conferiu e aceitou a entrega.</p>
+    </div>
+
+    <div class="term">
+      <h4>Pagamento</h4>
+      <p>É quando o dinheiro sai efetivamente dos cofres públicos para o fornecedor ou empresa.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> o dinheiro saiu da conta da Prefeitura.</p>
+    </div>
+
+    <div class="term">
+      <h4>RREO</h4>
+      <p>Relatório Resumido da Execução Orçamentária. Mostra a evolução das receitas e despesas.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é um boletim periódico de como o orçamento está andando.</p>
+    </div>
+
+    <div class="term">
+      <h4>RGF</h4>
+      <p>Relatório de Gestão Fiscal. Ajuda a acompanhar limites fiscais, pessoal e responsabilidade fiscal.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é um controle da saúde fiscal da Prefeitura.</p>
+    </div>
+
+    <div class="term">
+      <h4>Crédito Adicional</h4>
+      <p>É uma alteração feita no orçamento durante o ano para reforçar, criar ou modificar despesas.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é uma mudança no orçamento depois que ele já foi aprovado.</p>
+    </div>
+
+    <div class="term">
+      <h4>Restos a Pagar</h4>
+      <p>São despesas assumidas em um ano que ficaram para ser pagas em outro.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é conta que ficou pendente do ano anterior.</p>
+    </div>
+
+    <div class="term">
+      <h4>Transparência Territorial</h4>
+      <p>É a possibilidade de saber quanto dinheiro público chega a cada bairro, localidade ou equipamento.</p>
+      <p class="mt-2 text-sm"><strong>Tradução:</strong> é saber quanto veio para o nosso território.</p>
+    </div>
+  </div>
+</section>
+
+<section id="conclusao" class="card">
+  <h2 class="section-title">10. Conclusões do Observatório</h2>
+
+  <p class="mb-4">
+    O Parque Mambucaba e a Vila Histórica de Mambucaba aparecem na LOA 2026 por meio de ações pontuais, especialmente saneamento, drenagem, pavimentação e cultura. No entanto, a principal conclusão deste relatório é que o orçamento ainda não oferece transparência territorial suficiente para que o cidadão saiba quanto do gasto público chega efetivamente ao bairro.
+  </p>
+
+  <div class="note">
+    <strong>Conclusão central:</strong> a Prefeitura precisa avançar na transparência por território, bairro, unidade pública e equipamento. Sem isso, o controle social fica limitado e a população não consegue acompanhar com precisão se o orçamento realmente melhora a vida no 4º Distrito.
+  </div>
+
+  <h3 class="sub-title">Perguntas prioritárias para cobrança</h3>
+  <ul class="list-disc pl-6 space-y-2">
+    <li>A ação de esgotamento sanitário de R$ 2.005.000,00 já foi licitada?</li>
+    <li>Quais ruas serão contempladas pela ação de drenagem e pavimentação?</li>
+    <li>Existe plano de macrodrenagem para o Rio Mambucaba?</li>
+    <li>Qual é o orçamento real da Secretaria Executiva do Parque Mambucaba?</li>
+    <li>Quanto do orçamento da saúde e educação chega efetivamente ao 4º Distrito?</li>
+  </ul>
+</section>
+
+<section id="fontes" class="card">
+  <h2 class="section-title">Fontes e Observações</h2>
+
+  <ul class="list-disc pl-6 space-y-2">
+    <li>Lei Orçamentária Anual de Angra dos Reis — LOA 2026.</li>
+    <li>Anexos da LOA 2026, especialmente programas de trabalho e administração direta/indireta.</li>
+    <li>Portal da Transparência de Angra dos Reis.</li>
+    <li>Boletim Oficial e documentos públicos municipais.</li>
+    <li>Observatório de Políticas Públicas — Um Olhar sobre Mambucaba / ICPT.</li>
+  </ul>
+
+  <div class="note mt-6">
+    Este relatório deve ser atualizado conforme novas informações oficiais forem publicadas, especialmente dados de empenho, liquidação, pagamento, contratos e medições de obras.
+  </div>
+</section>
+
+<section class="bg-primary text-white rounded-xl shadow-lg p-8 md:p-12 text-center">
+  <h2 class="text-3xl font-bold mb-4">Continue a análise</h2>
+  <p class="text-xl mb-8 font-light">Acesse também o painel visual e o mapa territorial do Observatório.</p>
+
+  <div class="flex flex-col sm:flex-row justify-center gap-3">
+   <a href="https://observatoriomambucaba.com.br/painel-interativo/" class="btn-nav bg-white text-primary">
+📊 Ver Painel Interativo
+</a>
+    <a href="https://www.google.com/maps/d/viewer?mid=1PygHi96FwCWIbPb8KYFsKOusWCESfL8&hl=pt-BR" target="_blank" class="btn-nav bg-accent text-white">🗺️ Ver Mapa Territorial</a>
+    <a href="https://observatoriomambucaba.com.br/" class="btn-nav bg-white/10 text-white border border-white/30">🏠 Voltar para a Central</a>
+<a href="https://observatoriomambucaba.com.br/#participe"
+class="btn-nav bg-accent text-white">
+📍 Registrar Demanda
+</a>
+  </div>
+</section>
+
+</main>
+<section class="card">
+
+<h2 class="section-title">
+Páginas Relacionadas
+</h2>
+
+<div class="links">
+
+<a href="https://observatoriomambucaba.com.br/">
+🏠 Central do Observatório
+</a>
+
+<a href="https://observatoriomambucaba.com.br/sobre-o-observatorio-3/">
+ℹ️ Sobre o Observatório
+</a>
+
+<a href="https://observatoriomambucaba.com.br/metodologia-do-registro-de-demandas/">
+📍 Metodologia
+</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-uso-da-inteligencia-artificial/">
+🤖 Política de IA
+</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-privacidade/">
+🔒 Política de Privacidade
+</a>
+
+<a href="https://observatoriomambucaba.com.br/politica-de-cookies/">
+🍪 Política de Cookies
+</a>
+
+<a href="https://observatoriomambucaba.com.br/termos-de-uso/">
+📜 Termos de Uso
+</a>
+
+</div>
+
+</section>
+
+<footer class="bg-gray-800 text-gray-400 py-10 text-sm mt-12 text-center px-4">
+  <p class="mb-2">Relatório Orçamentário Territorial — Parque Mambucaba e 4º Distrito.</p>
+  <p class="mb-2">Ano de referência: LOA 2026. Órgão: Prefeitura Municipal de Angra dos Reis.</p>
+  <p>Desenvolvido para o Observatório de Políticas Públicas — Um Olhar sobre Mambucaba / ICPT.</p>
+</footer>
+
+</body>
+</html>
