@@ -6,9 +6,8 @@
 
 export const NAV_LINKS = [
   { href: '/', label: 'Início' },
-  { href: '/monte-seu-caminho', label: 'Monte seu Caminho' },
+  { href: '/conhecer', label: 'O Programa' },
   { href: '/visitar', label: 'Visitar' },
-  { href: '/experiencias', label: 'Experiências' },
   { href: '/mapa', label: 'Mapa' },
   { href: '/hospedar', label: 'Hospedar' },
   { href: '/participar', label: 'Participar' },
