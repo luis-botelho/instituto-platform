@@ -7,6 +7,7 @@ import {
   type Experiencia,
 } from '@/lib/data'
 import { StatusBadge } from '@/components/status-badge'
+import { withBasePath } from '@/lib/paths'
 
 export function ExperienceCard({ exp }: { exp: Experiencia }) {
   return (
@@ -16,7 +17,7 @@ export function ExperienceCard({ exp }: { exp: Experiencia }) {
         className="relative block aspect-[16/10] overflow-hidden"
       >
         <Image
-          src={exp.imagem || '/placeholder.svg'}
+          src={withBasePath(exp.imagem || '/placeholder.svg')}
           alt={`Imagem da experiência ${exp.nome}`}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"

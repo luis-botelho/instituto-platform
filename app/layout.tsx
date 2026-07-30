@@ -45,7 +45,10 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' &&
+          process.env.NEXT_PUBLIC_DEPLOY_TARGET !== 'github-pages' && (
+            <Analytics />
+          )}
       </body>
     </html>
   )

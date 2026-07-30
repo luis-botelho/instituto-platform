@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { BedDouble, MapPin, ArrowRight } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
 import { StatusBadge } from '@/components/status-badge'
 import { Button } from '@/components/ui/button'
 import { HOSPEDAGENS } from '@/lib/data'
+import { withBasePath } from '@/lib/paths'
 
 export const metadata: Metadata = {
   title: 'Onde se hospedar | Caminhos de Mambucaba',
@@ -27,7 +29,7 @@ export default function HospedarPage() {
             <div className="overflow-hidden rounded-2xl border border-border bg-background md:grid md:grid-cols-2">
               <div className="relative min-h-64 md:min-h-full">
                 <Image
-                  src="/images/hospedar.png"
+                  src={withBasePath('/images/hospedar.png')}
                   alt="Varanda de pousada com rede, cercada pela mata, com vista para o mar"
                   fill
                   className="object-cover"
@@ -42,12 +44,13 @@ export default function HospedarPage() {
                   vive Mambucaba de dentro. Este catálogo está em construção junto às iniciativas.
                 </p>
                 <div>
-                  <Button className="rounded-full">
-                    <a href="/participar">
-                      Cadastrar minha hospedagem
-                      <ArrowRight className="ml-2 size-4" />
-                    </a>
-                  </Button>
+                  <Link
+                    href="/participar"
+                    className="inline-flex h-8 items-center gap-1.5 rounded-full bg-primary px-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/80"
+                  >
+                    Cadastrar minha hospedagem
+                    <ArrowRight className="size-4" />
+                  </Link>
                 </div>
               </div>
             </div>
