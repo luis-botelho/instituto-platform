@@ -97,10 +97,10 @@ export default function VisitarPage() {
             Experiências para viver
           </h2>
           <Link
-            href="/experiencias"
+            href="/monte-seu-caminho"
             className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all"
           >
-            Ver todas <ArrowRight className="size-4" />
+            Montar um caminho <ArrowRight className="size-4" />
           </Link>
         </div>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

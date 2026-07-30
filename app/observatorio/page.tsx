@@ -1,137 +1,19 @@
 import type { Metadata } from 'next'
-import { BarChart3, FileText, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, Database, Map, ShieldCheck } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
-import { StatusBadge } from '@/components/status-badge'
-import { Button } from '@/components/ui/button'
-import { INDICADORES, PUBLICACOES } from '@/lib/data'
+import { ObservatoryToolCard } from '@/components/observatorio/tool-card'
+import { OBSERVATORY_TOOLS } from '@/lib/observatorio-data'
 
-export const metadata: Metadata = {
-  title: 'Observatório | Caminhos de Mambucaba',
-  description:
-    'Central de Inteligência Territorial de Mambucaba: dados, escutas, indicadores e pesquisas para apoiar decisões de quem planeja e atua no território.',
-}
-
-const PUBLICOS = [
-  {
-    titulo: 'Universidades e pesquisa',
-    texto:
-      'Acesso a diagnósticos, escutas e dados territoriais para pesquisa aplicada e extensão.',
-  },
-  {
-    titulo: 'Poder público',
-    texto:
-      'Indicadores e leituras do território para apoiar políticas de turismo, cultura e economia local.',
-  },
-  {
-    titulo: 'Organizações e financiadores',
-    texto:
-      'Evidências sobre o impacto do turismo de base comunitária e a circulação econômica local.',
-  },
-]
+export const metadata: Metadata = { title: 'Observatório Mambucaba', description: 'Dados, documentos, pesquisas e participação cidadã a serviço do território.' }
 
 export default function ObservatorioPage() {
-  return (
-    <main id="conteudo">
-        <PageHero
-          eyebrow="Central de Inteligência Territorial"
-          title="O território que se conhece, se transforma"
-          description="O Observatório organiza dados, escutas e pesquisas sobre Mambucaba. É a camada de inteligência que conecta comunidade, iniciativas e instituições em torno de decisões mais justas para o território."
-        />
-
-        <section className="border-b border-border bg-card">
-          <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-            <div className="mb-8 flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center rounded-full bg-primary/15 text-primary">
-                <BarChart3 className="size-5" />
-              </span>
-              <h2 className="font-serif text-2xl font-semibold text-foreground md:text-3xl">
-                Panorama do território
-              </h2>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {INDICADORES.map((ind) => (
-                <div
-                  key={ind.rotulo}
-                  className="rounded-2xl border border-border bg-background p-6"
-                >
-                  <p className="font-serif text-4xl font-semibold text-primary">{ind.valor}</p>
-                  <p className="mt-2 text-sm font-semibold text-foreground">{ind.rotulo}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                    {ind.descricao}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-              Números demonstrativos, apresentados para ilustrar o painel de indicadores. Serão
-              substituídos por dados reais à medida que as escutas e cadastros avançarem.
-            </p>
-          </div>
-        </section>
-
-        <section className="bg-background">
-          <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-            <div className="mb-8 flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center rounded-full bg-river/15 text-river">
-                <FileText className="size-5" />
-              </span>
-              <h2 className="font-serif text-2xl font-semibold text-foreground md:text-3xl">
-                Publicações e pesquisas
-              </h2>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {PUBLICACOES.map((pub) => (
-                <article
-                  key={pub.titulo}
-                  className="flex flex-col gap-3 rounded-2xl border border-border bg-card p-6"
-                >
-                  <span className="w-fit rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
-                    {pub.tipo}
-                  </span>
-                  <h3 className="font-serif text-lg font-semibold text-foreground text-balance">
-                    {pub.titulo}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{pub.resumo}</p>
-                  <div className="mt-auto pt-2">
-                    <StatusBadge status={pub.status} />
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-t border-border bg-secondary/40">
-          <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-            <h2 className="font-serif text-2xl font-semibold text-foreground md:text-3xl">
-              Para quem constrói o território
-            </h2>
-            <p className="mt-2 max-w-2xl leading-relaxed text-muted-foreground">
-              O Observatório é um espaço de cooperação. Se você pesquisa, gere políticas ou apoia
-              iniciativas no território, há caminhos para atuar em conjunto.
-            </p>
-
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {PUBLICOS.map((p) => (
-                <div key={p.titulo} className="rounded-2xl border border-border bg-card p-6">
-                  <h3 className="font-serif text-lg font-semibold text-foreground">{p.titulo}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.texto}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8">
-              <Button asChild className="rounded-full">
-                <a href="/participar">
-                  Propor uma cooperação
-                  <ArrowRight className="ml-2 size-4" />
-                </a>
-              </Button>
-            </div>
-          </div>
-        </section>
-      </main>
-  )
+  return <main>
+    <PageHero eyebrow="Inteligência territorial cidadã" title="Observar para compreender. Compreender para transformar." description="Dados, documentos, mapas, pesquisas e participação cidadã reunidos em uma central pública para conhecer e acompanhar Mambucaba.">
+      <div className="flex flex-wrap gap-3"><Link href="/demandas" className="rounded-full bg-accent px-5 py-3 font-semibold text-accent-foreground">Registrar uma demanda</Link><Link href="/radar" className="rounded-full border border-border bg-background px-5 py-3 font-semibold">Pesquisar no Radar</Link></div>
+    </PageHero>
+    <section className="mx-auto max-w-6xl px-4 py-12 md:py-16"><p className="text-xs font-bold uppercase tracking-[.2em] text-accent">Ferramentas</p><div className="mt-3 flex flex-wrap items-end justify-between gap-4"><h2 className="max-w-2xl font-serif text-3xl font-semibold">Conhecer, acompanhar e participar</h2><Link href="/sobre" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">Como funciona o Observatório <ArrowRight className="size-4" /></Link></div><div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{OBSERVATORY_TOOLS.map((tool) => <ObservatoryToolCard key={tool.href} tool={tool} />)}</div></section>
+    <section className="border-y bg-primary text-primary-foreground"><div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3">{[[Database,'Evidência','Diferenciamos dados confirmados, referências históricas e conteúdo demonstrativo.'],[ShieldCheck,'Responsabilidade','Ferramentas apoiam o cidadão, mas não substituem fontes, órgãos ou revisão humana.'],[Map,'Território','A leitura parte das localidades, relações e efeitos concretos das políticas públicas.']].map(([Icon,title,text]) => { const C=Icon as typeof Database; return <article key={title as string}><C className="size-6 opacity-70" /><h2 className="mt-4 font-serif text-xl font-semibold">{title as string}</h2><p className="mt-2 text-sm leading-relaxed opacity-80">{text as string}</p></article>})}</div></section>
+    <section className="mx-auto max-w-6xl px-4 py-12 text-center"><p className="text-sm font-semibold uppercase tracking-widest text-primary">Transparência em construção</p><h2 className="mx-auto mt-3 max-w-2xl font-serif text-3xl font-semibold">Uma ferramenta só é pública quando seus limites também são visíveis.</h2><p className="mx-auto mt-4 max-w-2xl text-muted-foreground">Nesta etapa, os recursos funcionam no navegador e não enviam dados para um servidor. A integração, moderação e publicação serão conectadas na fase de backend.</p></section>
+  </main>
 }

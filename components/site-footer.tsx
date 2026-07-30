@@ -67,6 +67,12 @@ export function SiteFooter() {
               </Link>
             </li>
           </ul>
+          <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2 text-xs text-primary-foreground/70">
+            <Link href="/politica-privacidade" className="hover:underline">Privacidade</Link>
+            <Link href="/politica-cookies" className="hover:underline">Cookies</Link>
+            <Link href="/politica-ia" className="hover:underline">Política de IA</Link>
+            <Link href="/termos-uso" className="hover:underline">Termos</Link>
+          </div>
         </div>
       </div>
 

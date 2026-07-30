@@ -94,4 +94,19 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scroll-behavior: smooth;
+  }
+  button, a {
+    @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
+  }
+}
+
+@media print {
+  header, footer, button, a {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
 }
