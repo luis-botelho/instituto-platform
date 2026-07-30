@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - agent/refatoracao-frontend-observatorio
   workflow_dispatch:
 
 permissions:
