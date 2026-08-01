@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Compass, MapPin } from 'lucide-react'
+import { withBasePath } from '@/lib/paths'
 
 export function HomeHero() {
   return (
     <section className="relative isolate overflow-hidden">
       <Image
-        src="/images/hero-mambucaba.png"
+        src={withBasePath('/images/hero-mambucaba.png')}
         alt="Vista aérea da costa de Mambucaba, entre a Serra do Mar, o rio e o mar"
         fill
         priority

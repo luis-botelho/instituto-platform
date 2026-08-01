@@ -4,6 +4,7 @@ import { ArrowRight, Search, Compass } from 'lucide-react'
 import { CAMINHOS, EXPERIENCIAS } from '@/lib/data'
 import { CaminhoCard } from '@/components/caminho-card'
 import { ExperienceCard } from '@/components/experience-card'
+import { withBasePath } from '@/lib/paths'
 
 /** Diferença em relação ao Google */
 export function DiferencaSection() {
@@ -120,7 +121,7 @@ export function VisaoTerritorioSection() {
       </div>
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border">
         <Image
-          src="/images/observatorio.png"
+          src={withBasePath('/images/observatorio.png')}
           alt="Mapa territorial desenhado à mão com curvas de nível e marcações"
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
