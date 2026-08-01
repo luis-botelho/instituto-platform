@@ -17,7 +17,8 @@ export async function insertIntoSupabase({ table, record }: SupabaseInsertOption
     )
   }
 
-  const response = await fetch(`${url.replace(/\/$/, '')}/rest/v1/${table}`, {
+  const baseUrl = url.trim().replace(/\/rest\/v1\/?$/, '').replace(/\/$/, '')
+  const response = await fetch(`${baseUrl}/rest/v1/${table}`, {
     method: 'POST',
     headers: {
       apikey: serviceRoleKey,
