@@ -31,6 +31,10 @@ export function DemandForm() {
   const [data, setData] = useState(initial)
   const [generated, setGenerated] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
+  const [demandProtocol, setDemandProtocol] = useState('')
+  const [consent, setConsent] = useState(false)
   const documentRef = useRef<HTMLDivElement>(null)
   const document = useMemo(() => buildDocument(data), [data])
   const update = (key: keyof Demand, value: string) => setData((current) => ({ ...current, [key]: value }))
@@ -54,6 +58,34 @@ export function DemandForm() {
     anchor.download = `demanda-${data.tema.toLowerCase().replaceAll(' ', '-')}.txt`
     anchor.click()
     URL.revokeObjectURL(url)
+  }
+  async function sendDemand() {
+    setSending(true)
+    setSendError('')
+    try {
+      const response = await fetch('/api/demands', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.nome,
+          email: data.email,
+          locality: data.localidade,
+          manifestationType: data.tipo,
+          topic: data.tema,
+          territorialReference: data.referencia,
+          report: data.relato,
+          consent,
+        }),
+      })
+      const result = (await response.json()) as { protocol?: string; error?: string }
+      if (!response.ok || !result.protocol) throw new Error(result.error ?? 'Não foi possível enviar a demanda.')
+      setDemandProtocol(result.protocol)
+      localStorage.removeItem('observatorio-demanda-rascunho')
+    } catch (cause) {
+      setSendError(cause instanceof Error ? cause.message : 'Não foi possível enviar a demanda.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -86,6 +118,15 @@ export function DemandForm() {
               <button onClick={() => { setData(initial); setGenerated(false) }} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><RotateCcw className="size-4" />Recomeçar</button>
             </div>
             <a href="https://transparencia.angra.rj.gov.br/ouvidoria" target="_blank" rel="noreferrer" className="mt-5 block rounded-xl bg-accent p-4 text-center text-sm font-semibold text-accent-foreground">Revisar e abrir a Ouvidoria oficial</a>
+            <div className="mt-5 rounded-xl border border-border p-4">
+              <h3 className="font-semibold">Enviar uma cópia ao Observatório</h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Este envio não substitui o protocolo na Ouvidoria oficial. A equipe armazenará os dados para análise e eventual contato.</p>
+              {demandProtocol ? <p className="mt-3 rounded-lg bg-primary/10 p-3 text-sm text-primary">Demanda recebida. Protocolo: <strong>{demandProtocol}</strong></p> : <>
+                <label className="mt-3 flex items-start gap-2 text-xs text-muted-foreground"><input type="checkbox" checked={consent} onChange={(event) => setConsent(event.target.checked)} className="mt-0.5 size-4 accent-primary" /><span>Autorizo o armazenamento desta demanda e o contato do Observatório para esta finalidade.</span></label>
+                {sendError && <p role="alert" className="mt-3 text-sm text-destructive">{sendError}</p>}
+                <button type="button" onClick={sendDemand} disabled={!consent || sending} className="mt-3 w-full rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground disabled:cursor-not-allowed disabled:opacity-50">{sending ? 'Enviando…' : 'Enviar ao Observatório'}</button>
+              </>}
+            </div>
           </div>
         ) : <div className="rounded-2xl border border-dashed border-border bg-secondary/30 p-8"><h2 className="font-serif text-2xl font-semibold">Sua minuta aparecerá aqui</h2><p className="mt-3 leading-relaxed text-muted-foreground">O texto será estruturado no seu navegador. Nada é enviado ao Observatório nesta etapa.</p></div>}
       </div>

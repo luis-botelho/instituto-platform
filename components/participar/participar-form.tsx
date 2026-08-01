@@ -39,34 +39,61 @@ export function ParticiparForm() {
   const [type, setType] = useState('')
   const [sent, setSent] = useState(false)
   const [protocol, setProtocol] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const selected = PARTICIPATION_TYPES.find((item) => item.value === type)
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const form = event.currentTarget
-    const code = `CAM-${new Date().getFullYear()}-${Date.now().toString().slice(-6)}`
-    const submission = {
-      protocol: code,
-      type,
-      createdAt: new Date().toISOString(),
-      data: Object.fromEntries(new FormData(form).entries()),
+    const values = Object.fromEntries(new FormData(form).entries())
+    const commonFields = new Set(['nome', 'telefone', 'email', 'localidade', 'vinculo', 'observacoes', 'consentimento'])
+    const details = Object.fromEntries(Object.entries(values).filter(([key]) => !commonFields.has(key)))
+
+    setSubmitting(true)
+    setError('')
+    try {
+      const response = await fetch('/api/submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type,
+          name: values.nome,
+          phone: values.telefone,
+          email: values.email,
+          locality: values.localidade,
+          relationship: values.vinculo,
+          notes: values.observacoes,
+          consent: values.consentimento,
+          details,
+        }),
+      })
+      const result = (await response.json()) as { protocol?: string; error?: string }
+      if (!response.ok || !result.protocol) throw new Error(result.error ?? 'Não foi possível salvar a contribuição.')
+
+      localStorage.removeItem('caminhos-cadastros')
+      setProtocol(result.protocol)
+      setSent(true)
+      form.reset()
+      setType('')
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Não foi possível salvar a contribuição.')
+    } finally {
+      setSubmitting(false)
     }
-    const stored = JSON.parse(localStorage.getItem('caminhos-cadastros') ?? '[]') as unknown[]
-    localStorage.setItem('caminhos-cadastros', JSON.stringify([...stored, submission]))
-    setProtocol(code)
-    setSent(true)
   }
 
   return <div className="mx-auto max-w-3xl">
     <div className="rounded-2xl border border-border bg-card p-6 md:p-8">
-      {sent ? <div className="flex flex-col items-center gap-4 py-8 text-center"><span className="flex size-14 items-center justify-center rounded-full bg-primary/15 text-primary"><CheckCircle2 className="size-7" /></span><h3 className="font-serif text-xl font-semibold text-foreground">Contribuição salva neste dispositivo</h3><p className="max-w-md text-sm leading-relaxed text-muted-foreground">Protocolo local: <strong className="text-foreground">{protocol}</strong>. Enquanto o backend não estiver conectado, este registro permanece somente neste navegador e ainda não foi recebido pela equipe.</p><Button variant="outline" className="rounded-full" onClick={() => setSent(false)}>Nova contribuição</Button></div> : <form onSubmit={submit} className="flex flex-col gap-6">
+      {sent ? <div className="flex flex-col items-center gap-4 py-8 text-center"><span className="flex size-14 items-center justify-center rounded-full bg-primary/15 text-primary"><CheckCircle2 className="size-7" /></span><h3 className="font-serif text-xl font-semibold text-foreground">Contribuição recebida</h3><p className="max-w-md text-sm leading-relaxed text-muted-foreground">Protocolo: <strong className="text-foreground">{protocol}</strong>. O registro foi armazenado e já pode ser analisado pela equipe.</p><Button variant="outline" className="rounded-full" onClick={() => setSent(false)}>Nova contribuição</Button></div> : <form onSubmit={submit} className="flex flex-col gap-6">
         <div><h2 className="font-serif text-2xl font-semibold text-foreground">Cadastro Único — Caminhos de Mambucaba</h2><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Escolha como quer participar. O envio não representa aprovação automática ou ingresso imediato no programa.</p></div>
         <Field label="Como você deseja participar?"><select value={type} onChange={(event) => setType(event.target.value)} required className={inputClass}><option value="" disabled>Selecione uma opção</option>{PARTICIPATION_TYPES.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}</select></Field>
         <fieldset className="grid gap-5 border-t border-border pt-6 sm:grid-cols-2"><legend className="mb-5 font-serif text-lg font-semibold text-foreground">Identificação e contato</legend><Field label="Nome completo"><input name="nome" required autoComplete="name" className={inputClass} /></Field><Field label="WhatsApp ou telefone"><input name="telefone" required type="tel" autoComplete="tel" className={inputClass} /></Field><Field label="E-mail"><input name="email" required type="email" autoComplete="email" className={inputClass} /></Field><Field label="Localidade"><SelectField name="localidade" options={LOCALIDADES} required /></Field><div className="sm:col-span-2"><Field label="Qual é seu vínculo com Mambucaba?"><SelectField name="vinculo" options={VINCULOS} required /></Field></div></fieldset>
         {selected && <fieldset className="grid gap-5 border-t border-border pt-6 sm:grid-cols-2"><legend className="mb-1 font-serif text-lg font-semibold text-foreground">{selected.title}</legend><p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:col-span-2">{selected.description}</p>{selected.fields.map((field) => <div key={field.name} className={field.type === 'textarea' ? 'sm:col-span-2' : ''}><Field label={field.label} hint={field.hint}>{field.type === 'select' ? <SelectField name={field.name} options={field.options ?? []} required={field.required} /> : field.type === 'textarea' ? <textarea name={field.name} required={field.required} className={`${inputClass} min-h-28 resize-y`} /> : <input name={field.name} required={field.required} type={field.type ?? 'text'} className={inputClass} />}</Field></div>)}</fieldset>}
         <Field label="Informações adicionais"><textarea name="observacoes" className={`${inputClass} min-h-24 resize-y`} placeholder="Acrescente qualquer informação importante." /></Field>
         <label className="flex items-start gap-3 text-sm text-muted-foreground"><input name="consentimento" value="autorizado" type="checkbox" required className="mt-1 size-4 accent-primary" /><span>Autorizo o contato para retorno sobre esta contribuição e confirmo que as informações podem ser analisadas no processo de validação.</span></label>
-        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between"><p className="text-xs leading-relaxed text-muted-foreground">Sem backend: o rascunho será salvo apenas neste navegador.</p><Button type="submit" className="rounded-full" disabled={!selected}>Salvar contribuição</Button></div>
+        {error && <p role="alert" className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
+        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between"><p className="text-xs leading-relaxed text-muted-foreground">Os dados serão enviados com segurança para análise da equipe.</p><Button type="submit" className="rounded-full" disabled={!selected || submitting}>{submitting ? 'Enviando…' : 'Enviar contribuição'}</Button></div>
       </form>}
     </div>
   </div>
