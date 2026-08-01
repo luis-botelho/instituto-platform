@@ -62,7 +62,7 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link href="/observatorio" className="underline-offset-4 hover:underline">
+              <Link href="/contato" className="underline-offset-4 hover:underline">
                 Falar com o Observatório
               </Link>
             </li>

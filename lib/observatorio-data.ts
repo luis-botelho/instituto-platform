@@ -5,6 +5,7 @@ import {
   FileText,
   HeartPulse,
   Landmark,
+  LayoutDashboard,
   MessageSquareText,
   Radar,
   type LucideIcon,
@@ -24,6 +25,7 @@ export const OBSERVATORY_TOOLS: ObservatoryTool[] = [
   { title: 'Radar Mambucaba', description: 'Pesquise assuntos do território diretamente em fontes públicas oficiais.', href: '/radar', label: 'Abrir o radar', icon: Radar, tone: 'river' },
   { title: 'Saúde em Mambucaba', description: 'Conheça os resultados da escuta territorial sobre acesso à saúde.', href: '/saude', label: 'Ver pesquisa', icon: HeartPulse, tone: 'primary' },
   { title: 'Orçamento territorial', description: 'Entenda valores, ações públicas, conceitos e perguntas prioritárias.', href: '/relatorio-orcamentario', label: 'Ler relatório', icon: Landmark, tone: 'accent' },
+  { title: 'Painel orçamentário', description: 'Filtre e compare as ações nominalmente localizadas na LOA 2026.', href: '/painel-interativo', label: 'Explorar painel', icon: LayoutDashboard, tone: 'primary' },
   { title: 'Controle social FEAM', description: 'Explore riscos, instrumentos, evidências e oferta declarada de leitos SUS.', href: '/controle-social', label: 'Ver análise', icon: FileSearch, tone: 'river' },
   { title: 'Biblioteca territorial', description: 'Navegue por relatórios, pesquisas, metodologias e documentos de referência.', href: '/publicacoes', label: 'Abrir biblioteca', icon: BookOpen, tone: 'primary' },
 ]

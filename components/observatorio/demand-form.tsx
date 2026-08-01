@@ -1,7 +1,7 @@
 'use client'
 
 import { useMemo, useRef, useState } from 'react'
-import { Check, Copy, Download, Printer, RotateCcw } from 'lucide-react'
+import { Check, Copy, Download, FileJson, Printer, RotateCcw } from 'lucide-react'
 
 type Demand = { nome: string; email: string; localidade: string; tipo: string; tema: string; referencia: string; relato: string }
 const initial: Demand = { nome: '', email: '', localidade: '', tipo: '', tema: '', referencia: '', relato: '' }
@@ -35,8 +35,16 @@ export function DemandForm() {
   const [sendError, setSendError] = useState('')
   const [demandProtocol, setDemandProtocol] = useState('')
   const [consent, setConsent] = useState(false)
+  const [showJson, setShowJson] = useState(false)
   const documentRef = useRef<HTMLDivElement>(null)
   const document = useMemo(() => buildDocument(data), [data])
+  const technicalData = useMemo(() => ({
+    schemaVersion: 1,
+    applicant: { name: data.nome, email: data.email },
+    territory: { locality: data.localidade, reference: data.referencia || null },
+    manifestation: { type: data.tipo, topic: data.tema, report: data.relato },
+    guidance: 'Revisar antes de protocolar no canal oficial competente.',
+  }), [data])
   const update = (key: keyof Demand, value: string) => setData((current) => ({ ...current, [key]: value }))
 
   function submit(event: React.FormEvent) {
@@ -56,6 +64,15 @@ export function DemandForm() {
     const anchor = window.document.createElement('a')
     anchor.href = url
     anchor.download = `demanda-${data.tema.toLowerCase().replaceAll(' ', '-')}.txt`
+    anchor.click()
+    URL.revokeObjectURL(url)
+  }
+  function downloadJson() {
+    const blob = new Blob([JSON.stringify(technicalData, null, 2)], { type: 'application/json;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const anchor = window.document.createElement('a')
+    anchor.href = url
+    anchor.download = `demanda-${data.tema.toLowerCase().replaceAll(' ', '-')}.json`
     anchor.click()
     URL.revokeObjectURL(url)
   }
@@ -111,12 +128,15 @@ export function DemandForm() {
             <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary"><Check className="size-3.5" /> Minuta pronta para revisão</span>
             <h2 className="mt-4 font-serif text-2xl font-semibold">Pedido estruturado</h2>
             <pre className="mt-4 max-h-[32rem] overflow-auto whitespace-pre-wrap rounded-xl bg-secondary/40 p-4 font-sans text-sm leading-relaxed">{document}</pre>
-            <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3">
               <button onClick={copy} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold">{copied ? <Check className="size-4" /> : <Copy className="size-4" />}{copied ? 'Copiado' : 'Copiar'}</button>
-              <button onClick={download} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><Download className="size-4" />Baixar</button>
-              <button onClick={() => window.print()} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><Printer className="size-4" />Imprimir</button>
+              <button onClick={download} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><Download className="size-4" />Baixar texto</button>
+              <button onClick={() => window.print()} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><Printer className="size-4" />Salvar em PDF</button>
+              <button onClick={() => setShowJson((current) => !current)} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><FileJson className="size-4" />{showJson ? 'Ocultar JSON' : 'Ver JSON'}</button>
+              <button onClick={downloadJson} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><Download className="size-4" />Baixar JSON</button>
               <button onClick={() => { setData(initial); setGenerated(false) }} className="inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold"><RotateCcw className="size-4" />Recomeçar</button>
             </div>
+            {showJson && <pre className="mt-4 max-h-72 overflow-auto whitespace-pre-wrap rounded-xl bg-secondary/40 p-4 text-xs leading-relaxed">{JSON.stringify(technicalData, null, 2)}</pre>}
             <a href="https://transparencia.angra.rj.gov.br/ouvidoria" target="_blank" rel="noreferrer" className="mt-5 block rounded-xl bg-accent p-4 text-center text-sm font-semibold text-accent-foreground">Revisar e abrir a Ouvidoria oficial</a>
             <div className="mt-5 rounded-xl border border-border p-4">
               <h3 className="font-semibold">Enviar uma cópia ao Observatório</h3>
