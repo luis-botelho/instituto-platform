@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageHero } from '@/components/page-hero'
 
 export const metadata: Metadata = {
-  title: 'Política de IA · Caminhos de Mambucaba',
+  title: 'Política de IA',
   description:
     'Saiba como o Observatório Mambucaba utiliza inteligência artificial de forma responsável, transparente e orientada ao fortalecimento da participação cidadã.',
 }

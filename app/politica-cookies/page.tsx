@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageHero } from '@/components/page-hero'
 
 export const metadata: Metadata = {
-  title: 'Política de Cookies · Caminhos de Mambucaba',
+  title: 'Política de Cookies',
   description:
     'Saiba como o Observatório Mambucaba utiliza cookies e tecnologias semelhantes no portal.',
 }

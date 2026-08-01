@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageHero } from '@/components/page-hero'
 
 export const metadata: Metadata = {
-  title: 'Sobre o Observatório · Caminhos de Mambucaba',
+  title: 'Sobre o Observatório',
   description:
     'Conheça o Observatório Mambucaba, sua missão, visão, valores e ferramentas de inteligência territorial cidadã.',
 }

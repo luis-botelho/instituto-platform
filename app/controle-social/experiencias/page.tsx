@@ -5,7 +5,7 @@ import { PageHero } from '@/components/page-hero'
 import { ExperiencesExplorer } from '@/components/experiences/experiences-explorer'
 
 export const metadata: Metadata = {
-  title: 'Experiências | Caminhos de Mambucaba',
+  title: 'Experiências de controle social',
   description:
     'Caminhos que combinam natureza, história, cultura, memória e gastronomia — experiências territoriais em construção com quem vive Mambucaba.',
 }

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageHero } from '@/components/page-hero'
 
 export const metadata: Metadata = {
-  title: 'Termos de Uso · Caminhos de Mambucaba',
+  title: 'Termos de Uso',
   description:
     'Regras gerais de utilização do portal, das ferramentas digitais e dos conteúdos disponibilizados pelo Observatório Mambucaba.',
 }

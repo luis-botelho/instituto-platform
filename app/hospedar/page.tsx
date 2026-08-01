@@ -9,7 +9,7 @@ import { HOSPEDAGENS } from '@/lib/data'
 import { withBasePath } from '@/lib/paths'
 
 export const metadata: Metadata = {
-  title: 'Onde se hospedar | Caminhos de Mambucaba',
+  title: 'Onde se hospedar',
   description:
     'Pousadas, casas de temporada e hospedagens de base local no território de Mambucaba, no eixo Angra dos Reis – Paraty.',
 }
