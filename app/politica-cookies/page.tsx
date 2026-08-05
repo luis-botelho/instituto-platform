@@ -5,7 +5,8 @@ import { PageHero } from '@/components/page-hero'
 export const metadata: Metadata = {
   title: 'Política de Cookies',
   description:
-    'Saiba como o Observatório Mambucaba utiliza cookies e tecnologias semelhantes no portal.',
+    'Saiba quais tecnologias de medição e serviços externos são usados no Caminhos de Mambucaba.',
+  alternates: { canonical: '/politica-cookies' },
 }
 
 const SECTIONS = [
@@ -23,50 +24,40 @@ const SECTIONS = [
   },
   {
     n: '2',
-    title: 'Por que usamos cookies?',
+    title: 'O que este site usa atualmente?',
     content: (
-      <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
-        <li>Garantir o funcionamento correto do portal;</li>
-        <li>Lembrar preferências do usuário;</li>
-        <li>Melhorar a experiência de navegação;</li>
-        <li>Identificar falhas e problemas técnicos;</li>
-        <li>Gerar estatísticas de acesso;</li>
-        <li>Proteger formulários contra spam e ataques automatizados;</li>
-        <li>Integrar ferramentas externas utilizadas pelo Observatório.</li>
-      </ul>
+      <div className="space-y-3">
+        <p>
+          O portal usa o Vercel Web Analytics para medir visualizações de páginas em produção. A
+          ferramenta é de primeira parte e foi projetada para funcionar sem cookies de rastreamento
+          e sem acompanhar uma pessoa entre sites diferentes.
+        </p>
+        <p>
+          O código atual não grava cookies próprios de publicidade, personalização ou autenticação.
+          Por isso, não exibimos uma faixa de consentimento sem finalidade real. Esta página será
+          atualizada antes da ativação de qualquer nova tecnologia que altere esse cenário.
+        </p>
+      </div>
     ),
   },
   {
     n: '3',
-    title: 'Tipos de cookies utilizados',
+    title: 'Categorias e finalidades',
     content: (
       <div className="space-y-4">
         <div>
-          <h3 className="font-semibold text-foreground">Cookies necessários</h3>
+          <h3 className="font-semibold text-foreground">Funcionamento e segurança</h3>
           <p className="text-sm text-muted-foreground">
-            Essenciais para o funcionamento do site. Sem eles, determinadas páginas ou
-            funcionalidades podem não funcionar corretamente.
+            A hospedagem e os formulários podem processar dados técnicos necessários para entregar
+            páginas, receber envios autorizados e proteger a infraestrutura. Isso não equivale ao
+            uso de cookies publicitários.
           </p>
         </div>
         <div>
-          <h3 className="font-semibold text-foreground">Cookies de preferência</h3>
+          <h3 className="font-semibold text-foreground">Medição de audiência sem cookies</h3>
           <p className="text-sm text-muted-foreground">
-            Permitem lembrar escolhas realizadas pelo usuário, como aceitação de cookies ou
-            preferências de navegação.
-          </p>
-        </div>
-        <div>
-          <h3 className="font-semibold text-foreground">Cookies estatísticos</h3>
-          <p className="text-sm text-muted-foreground">
-            Utilizados para compreender como os visitantes utilizam o portal. Essas informações
-            ajudam a melhorar conteúdos, páginas e ferramentas.
-          </p>
-        </div>
-        <div>
-          <h3 className="font-semibold text-foreground">Cookies de segurança</h3>
-          <p className="text-sm text-muted-foreground">
-            Utilizados para proteger o portal contra ataques, tentativas de invasão e uso abusivo
-            dos formulários.
+            O Vercel Web Analytics registra dados agregados de acesso para ajudar a entender quais
+            páginas são visitadas e identificar melhorias, sem criar perfis publicitários.
           </p>
         </div>
       </div>
@@ -74,23 +65,19 @@ const SECTIONS = [
   },
   {
     n: '4',
-    title: 'Ferramentas que podem utilizar cookies',
+    title: 'Links e serviços de terceiros',
     content: (
       <>
-        <ul className="list-disc space-y-1 pl-5 text-sm leading-relaxed text-muted-foreground">
-          <li>WordPress;</li>
-          <li>Google Maps;</li>
-          <li>Plugins de formulários;</li>
-          <li>Plugins de segurança;</li>
-          <li>Ferramentas estatísticas;</li>
-          <li>Serviços incorporados de terceiros.</li>
-        </ul>
+        <p>
+          O portal contém links para serviços externos, como Instagram, Google Maps, Google Forms
+          e canais públicos. Esses serviços são abertos somente quando o usuário escolhe acessar o
+          link e possuem políticas próprias.
+        </p>
         <div className="mt-4 rounded-xl border-l-4 border-accent bg-secondary/50 p-4 text-sm">
           <strong className="text-foreground">Atenção:</strong>
           <p className="mt-1 text-muted-foreground">
-            Quando o usuário acessar conteúdos incorporados de terceiros, como mapas ou serviços
-            externos, esses serviços poderão utilizar seus próprios cookies conforme suas
-            respectivas políticas.
+            Ao sair deste domínio, o serviço de destino poderá usar cookies ou outras tecnologias
+            conforme a política dele. O Caminhos de Mambucaba não controla esse tratamento externo.
           </p>
         </div>
       </>
@@ -98,13 +85,13 @@ const SECTIONS = [
   },
   {
     n: '5',
-    title: 'Consentimento',
+    title: 'Quando pediremos consentimento?',
     content: (
       <>
         <p>
-          Sempre que aplicável, o usuário poderá aceitar, rejeitar ou configurar os cookies
-          utilizados pelo portal. A recusa de determinados cookies pode limitar algumas
-          funcionalidades, mas não deve impedir o acesso ao conteúdo principal do Observatório.
+          Se o portal passar a usar cookies não essenciais ou incorporar uma ferramenta que dependa
+          de consentimento, ela deverá permanecer desativada até que a pessoa possa aceitar ou
+          rejeitar a categoria correspondente. A navegação principal não dependerá dessa escolha.
         </p>
         <div className="mt-4 rounded-xl border-l-4 border-primary bg-secondary/50 p-4 text-sm">
           <strong className="text-foreground">Boas práticas adotadas pelo Observatório:</strong>
@@ -120,7 +107,7 @@ const SECTIONS = [
   },
   {
     n: '6',
-    title: 'Como gerenciar cookies?',
+    title: 'Como controlar dados no navegador?',
     content: (
       <>
         <p>O usuário pode controlar cookies diretamente pelo navegador utilizado. A maioria dos navegadores permite:</p>
@@ -152,7 +139,7 @@ export default function PoliticaCookiesPage() {
       <PageHero
         eyebrow="Transparência"
         title="Política de Cookies"
-        description="Como o Observatório Mambucaba utiliza cookies e tecnologias semelhantes para melhorar a experiência dos usuários e garantir o funcionamento do portal."
+        description="Quais tecnologias de medição o portal usa hoje, quando o consentimento seria necessário e como serviços externos tratam seus próprios dados."
       />
 
       <section className="bg-background">

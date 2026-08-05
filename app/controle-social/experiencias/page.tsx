@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'Experiências de controle social',
   description:
     'Caminhos que combinam natureza, história, cultura, memória e gastronomia — experiências territoriais em construção com quem vive Mambucaba.',
+  alternates: { canonical: '/controle-social/experiencias' },
 }
 
 export default function ExperienciasPage() {

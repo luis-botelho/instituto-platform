@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: 'Onde se hospedar',
   description:
     'Pousadas, casas de temporada e hospedagens de base local no território de Mambucaba, no eixo Angra dos Reis – Paraty.',
+  alternates: { canonical: '/hospedar' },
 }
 
 export default function HospedarPage() {

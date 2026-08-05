@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import { AtSign, ExternalLink, Landmark, MessageSquareText } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
 
-export const metadata: Metadata = { title: 'Contato e canais oficiais' }
+export const metadata: Metadata = { title: 'Contato e canais oficiais', description: 'Encontre os canais do Caminhos e do Observatório Mambucaba e acesse serviços públicos relacionados.', alternates: { canonical: '/contato' } }
 
 const channels = [
-  { title: 'Falar com o Observatório', description: 'Acompanhe o trabalho e envie uma mensagem pelo Instagram.', href: 'https://www.instagram.com/observatoriomambucaba', icon: AtSign },
+  { title: 'Falar com o Caminhos', description: 'Acompanhe o trabalho e envie uma mensagem pelo Instagram.', href: 'https://www.instagram.com/caminhos.mambucaba', icon: AtSign },
   { title: 'Registrar uma demanda', description: 'Organize um relato e envie uma cópia ao Observatório.', href: '/demandas', icon: MessageSquareText },
   { title: 'Ouvidoria Municipal / SIC', description: 'Protocole manifestações que precisam produzir efeito administrativo.', href: 'https://transparencia.angra.rj.gov.br/ouvidoria', icon: Landmark },
   { title: 'Defesa Civil de Angra', description: 'Use o canal oficial para prevenção, risco e ocorrências de defesa civil.', href: 'https://angra.rj.gov.br/secretarias/secretaria-de-protecao-e-defesa-civil/fale-conosco', icon: Landmark },

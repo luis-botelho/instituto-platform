@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { PageHero } from '@/components/page-hero'
 import { BudgetDashboard } from '@/components/observatorio/budget-dashboard'
 
-export const metadata: Metadata = { title: 'Painel Interativo Orçamentário 2026' }
+export const metadata: Metadata = { title: 'Painel Interativo Orçamentário 2026', description: 'Explore temas e ações do orçamento público com recorte territorial de Mambucaba.', alternates: { canonical: '/painel-interativo' } }
 
 export default function PainelInterativoPage() {
   return <main>

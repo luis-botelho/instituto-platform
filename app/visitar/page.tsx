@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Visitar',
   description:
     'Descubra o que fazer, onde comer, onde se hospedar e como viver Mambucaba de um jeito próprio.',
+  alternates: { canonical: '/visitar' },
 }
 
 const CATEGORIA_ICONS = [

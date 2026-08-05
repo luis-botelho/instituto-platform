@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Termos de Uso',
   description:
     'Regras gerais de utilização do portal, das ferramentas digitais e dos conteúdos disponibilizados pelo Observatório Mambucaba.',
+  alternates: { canonical: '/termos-uso' },
 }
 
 const SECTIONS = [

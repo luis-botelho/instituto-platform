@@ -38,6 +38,7 @@ export async function generateMetadata({
   return {
     title: experience.nome,
     description: experience.resumo,
+    alternates: { canonical: `/experiencias/${experience.slug}` },
   }
 }
 

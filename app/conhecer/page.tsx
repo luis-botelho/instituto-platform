@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'O Programa',
   description:
     'Conheça o Caminhos de Mambucaba, programa de desenvolvimento territorial por meio do turismo de base comunitária.',
+  alternates: { canonical: '/conhecer' },
 }
 
 const EIXOS = [

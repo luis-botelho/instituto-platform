@@ -5,7 +5,7 @@ import { PageHero } from '@/components/page-hero'
 import { ObservatoryToolCard } from '@/components/observatorio/tool-card'
 import { OBSERVATORY_TOOLS } from '@/lib/observatorio-data'
 
-export const metadata: Metadata = { title: 'Observatório Mambucaba', description: 'Dados, documentos, pesquisas e participação cidadã a serviço do território.' }
+export const metadata: Metadata = { title: 'Observatório Mambucaba', description: 'Dados, documentos, pesquisas e participação cidadã a serviço do território de Mambucaba.', alternates: { canonical: '/observatorio' } }
 
 export default function ObservatorioPage() {
   return <main>

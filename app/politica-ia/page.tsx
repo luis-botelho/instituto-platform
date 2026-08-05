@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Política de IA',
   description:
     'Saiba como o Observatório Mambucaba utiliza inteligência artificial de forma responsável, transparente e orientada ao fortalecimento da participação cidadã.',
+  alternates: { canonical: '/politica-ia' },
 }
 
 const USOS = [

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Sobre o Observatório',
   description:
     'Conheça o Observatório Mambucaba, sua missão, visão, valores e ferramentas de inteligência territorial cidadã.',
+  alternates: { canonical: '/sobre' },
 }
 
 const FERRAMENTAS = [
