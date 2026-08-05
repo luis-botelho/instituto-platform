@@ -1,131 +1,69 @@
-# Documentação do MVP — Caminhos de Mambucaba
+# Caminhos de Mambucaba — MVP 1
 
-Última atualização: 1º de agosto de 2026.
+## Visão
 
-## Objetivo
+O Caminhos de Mambucaba é uma plataforma turística territorial que conecta visitantes, negócios locais e a operação da futura agência. O produto combina descoberta editorial, mapa, montagem de roteiro e solicitação de atendimento, gerando dados agregados para inteligência territorial.
 
-O Caminhos de Mambucaba reúne descoberta territorial, experiências, participação cidadã e as ferramentas públicas do Observatório Mambucaba. O MVP substitui formulários externos por uma camada própria de API e persistência no Supabase.
+## Hipótese do MVP
 
-## O que funciona hoje
+Se visitantes conseguirem descobrir ofertas locais e transformar escolhas em um pedido de planejamento, o Caminhos gerará demanda comercial mensurável para a agência e oportunidades para parceiros locais.
 
-### Descoberta territorial
+## Públicos
 
-- página inicial e apresentação do programa;
-- catálogo e páginas individuais de experiências;
-- mapa interativo com pontos territoriais e acesso ao Google My Maps;
-- hospedagem, visitação e montagem de roteiro por perfil;
-- layout responsivo e navegação por teclado.
+| Ator | Necessidade principal |
+| --- | --- |
+| Visitante brasileiro ou estrangeiro | Descobrir, comparar e montar uma experiência |
+| Parceiro local | Publicar e manter sua oferta atualizada |
+| Operação Caminhos | Moderar conteúdo, atender pedidos e medir demanda |
+| ICPT/Observatório | Consultar indicadores territoriais agregados |
 
-### Participação e dados
+## Escopo incluído
 
-- Cadastro Único com validação no cliente e no servidor;
-- gravação na tabela `submissions`;
-- protocolo único retornado após o envio;
-- consentimento explícito para tratamento das informações;
-- mensagens de sucesso e erro sem perder silenciosamente o envio.
+- home provisória com os três acessos institucionais;
+- catálogo de lugares, negócios, experiências, eventos e pacotes prontos;
+- conteúdo inicialmente em português e inglês, preparado para espanhol e alemão;
+- busca, filtros e páginas públicas indexáveis;
+- mapa interativo com preço indicativo, disponibilidade indicativa, curiosidades e acessibilidade;
+- `Meu Caminho` anônimo salvo por cookie/identificador no servidor;
+- solicitação de planejamento e atendimento, sem checkout;
+- cadastro de parceiros e acesso sem senha por magic link;
+- edição de perfil com moderação antes da publicação;
+- painel operacional mínimo;
+- avaliações públicas e estrutura do Selo Caminhos;
+- analytics consentidos e relatórios agregados.
 
-### Observatório
+## Fora do MVP
 
-- registro de demandas com gravação na tabela `demands`;
-- geração de minuta técnica e protocolo;
-- cópia e exportação em texto e JSON;
-- impressão ou salvamento em PDF pelo diálogo nativo do navegador;
-- painel orçamentário interativo;
-- biblioteca territorial e relatório orçamentário;
-- pesquisa de saúde com aviso metodológico e formulário externo;
-- matriz de controle social FEAM;
-- Radar com atalhos para pesquisa em fontes oficiais;
-- contato, Instagram, Ouvidoria e Defesa Civil.
+- pagamento ou reserva confirmada no site;
+- disponibilidade integrada em tempo real;
+- aplicativo mobile;
+- plataforma própria do Observatório ou ICPT;
+- marketplace financeiro, comissão automatizada ou assinatura;
+- recomendação por IA; o MVP usa regras determinísticas;
+- quatro idiomas com cobertura editorial completa.
 
-### Plataforma e SEO
+## Regras centrais
 
-- produção na Vercel integrada à branch `main`;
-- banco PostgreSQL no Supabase;
-- rotas de API privadas para escrita;
-- Vercel Analytics em produção;
-- favicon alinhado à marca territorial;
-- títulos, descrições, palavras-chave e Open Graph;
-- imagem social em 1200 × 630;
-- dados estruturados `WebSite` em JSON-LD;
-- `sitemap.xml`, `robots.txt` e manifesto web;
-- redirecionamentos permanentes das URLs mais importantes do WordPress.
+1. `Preço indicativo` e `disponibilidade a confirmar` nunca serão apresentados como garantia.
+2. Um pedido é solicitação de planejamento, não reserva.
+3. Promoção paga não altera nota, selo ou posição orgânica.
+4. Alteração feita por parceiro exige moderação.
+5. Visitante pode usar o catálogo sem login e sem personalização opcional.
+6. Dados pessoais não entram em analytics nem relatórios territoriais.
+7. O Observatório permanece no WordPress e não compartilha banco com o Caminhos.
+8. O ICPT e o Observatório aparecem como sustentação institucional, sem controlar a jornada turística.
 
-## Fluxos de dados
+## Métricas do MVP
 
-### Cadastro Único
+- visitantes que abrem um item do catálogo;
+- itens adicionados ao Meu Caminho;
+- caminhos enviados para atendimento;
+- conversão de visita em lead qualificado;
+- tempo até primeiro atendimento;
+- parceiros aprovados e perfis atualizados;
+- cliques de contato por parceiro;
+- uso de idioma, categoria e faixa de orçamento de forma agregada.
 
-`/participar` → `POST /api/submissions` → validação → Supabase `submissions` → protocolo.
+## Critério de sucesso
 
-### Registro de demanda
-
-`/demandas` → `POST /api/demands` → validação → Supabase `demands` → protocolo e documentos locais.
-
-As credenciais administrativas do Supabase nunca são enviadas ao navegador. As tabelas têm RLS ativada e não liberam leitura ou escrita direta para usuários anônimos.
-
-## Conteúdo que exige validação editorial
-
-Alguns dados territoriais, percentuais de saúde, referências FEAM, experiências e valores orçamentários foram migrados ou adaptados de materiais anteriores. Eles estão sinalizados quando necessário e devem ser confirmados com fontes oficiais antes de uso institucional.
-
-O MVP não oferece ainda:
-
-- painel administrativo para moderação;
-- consulta pública do andamento por protocolo;
-- autenticação e papéis de equipe;
-- notificações automáticas por e-mail;
-- importação automática de dados oficiais;
-- busca interna completa no Radar;
-- gestão de conteúdo por CMS;
-- geração programática de PDF sem o diálogo de impressão.
-
-## Operação
-
-### Publicação
-
-1. Desenvolver e verificar localmente com `npm run lint` e `npm run build`.
-2. Enviar mudanças aprovadas para `main`.
-3. Aguardar o deploy de produção na Vercel.
-4. Testar páginas principais, formulários, APIs, `sitemap.xml` e `robots.txt`.
-5. Conferir logs de erro da Vercel.
-
-### Banco
-
-A estrutura versionada está em `supabase/migrations/`. Mudanças futuras devem ser feitas em novas migrations, nunca editando retroativamente uma migration já aplicada em produção.
-
-### Ambiente
-
-Manter na Vercel, para produção:
-
-- `SUPABASE_URL`;
-- `SUPABASE_SERVICE_ROLE_KEY`;
-- `NEXT_PUBLIC_SITE_URL` com a URL canônica definitiva.
-
-Ao migrar para domínio próprio, atualizar `NEXT_PUBLIC_SITE_URL`, fazer novo deploy e enviar o novo sitemap ao Google Search Console e ao Bing Webmaster Tools.
-
-## Próximas etapas
-
-### Prioridade alta
-
-1. Criar painel administrativo com autenticação, perfis e trilha de auditoria.
-2. Permitir triagem, status e resposta de cadastros e demandas.
-3. Implementar consulta segura por protocolo.
-4. Revisar conteúdo e dados com responsáveis territoriais.
-5. Configurar domínio oficial, Search Console e monitoramento de erros.
-
-### Prioridade média
-
-1. Enviar confirmações e atualizações por e-mail.
-2. Migrar conteúdos editáveis para Supabase ou CMS.
-3. Adicionar proteção anti-spam e rate limiting aos formulários.
-4. Adotar testes automatizados dos fluxos críticos.
-5. Criar rotina de backup, retenção e descarte de dados pessoais.
-
-### Evolução de produto
-
-1. Busca interna e indexação de documentos públicos.
-2. Sincronização de indicadores com fontes oficiais.
-3. Painéis públicos de acompanhamento com dados anonimizados.
-4. Gestão colaborativa de experiências e pontos do mapa.
-
-## Critério de encerramento do MVP
-
-O MVP é considerado concluído porque os fluxos públicos essenciais estão online, os dois formulários críticos persistem dados, as ferramentas equivalentes do site anterior estão acessíveis, o projeto possui SEO técnico básico e sua operação está documentada. Os itens acima são evolução, governança e escala — não bloqueiam o uso inicial acompanhado.
+O MVP está validado quando uma pessoa descobre ofertas, monta um caminho, envia uma solicitação, a equipe atende pelo painel e o parceiro consegue manter seu perfil sob moderação, com métricas mínimas registradas.
