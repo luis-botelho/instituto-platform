@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Política de Privacidade',
   description:
     'Saiba como o Observatório Mambucaba trata dados pessoais, informações enviadas por usuários e registros de participação cidadã.',
+  alternates: { canonical: '/politica-privacidade' },
 }
 
 const SECTIONS = [
@@ -191,9 +192,9 @@ const SECTIONS = [
     title: 'Cookies e ferramentas externas',
     content: (
       <p>
-        O site poderá utilizar cookies e ferramentas externas, como mapas incorporados, formulários,
-        plugins de segurança, estatísticas de acesso e recursos do WordPress. O uso de cookies será
-        detalhado em página própria de{' '}
+        O site usa medição de audiência sem cookies por meio do Vercel Web Analytics e oferece links
+        para serviços externos, como mapas, formulários e redes sociais. O cenário atual e qualquer
+        alteração futura estão detalhados na{' '}
         <Link href="/politica-cookies" className="font-medium text-primary underline underline-offset-4">
           Política de Cookies
         </Link>.

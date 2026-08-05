@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Monte seu Caminho',
   description:
     'Responda algumas perguntas rápidas e receba sugestões de experiências para viver Mambucaba do seu jeito.',
+  alternates: { canonical: '/monte-seu-caminho' },
 }
 
 export default function MonteSeuCaminhoPage() {

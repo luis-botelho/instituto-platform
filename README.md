@@ -2,7 +2,7 @@
 
 Plataforma territorial para descoberta de experiências, participação comunitária e acesso organizado às iniciativas do Observatório Mambucaba.
 
-**Produção:** [observatoriomambucaba.com.br](https://observatoriomambucaba.com.br)
+**Produção:** [caminhosdemambucaba.live](https://caminhosdemambucaba.live)
 
 ## Funcionalidades do MVP
 

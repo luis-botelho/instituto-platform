@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     template: '%s · Caminhos de Mambucaba',
   },
   description: siteConfig.description,
+  alternates: { canonical: '/' },
   applicationName: siteConfig.name,
   keywords: ['Mambucaba', 'Angra dos Reis', 'turismo de base comunitária', 'território', 'Observatório Mambucaba', 'participação cidadã', 'cultura caiçara'],
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
@@ -57,17 +58,35 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const structuredData = {
-    '@context': 'https://schema.org', '@type': 'WebSite', name: siteConfig.name,
-    alternateName: siteConfig.shortName, url: siteConfig.url,
-    description: siteConfig.description, inLanguage: 'pt-BR', sameAs: [siteConfig.instagram],
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${siteConfig.url}/#website`,
+        name: siteConfig.name,
+        alternateName: siteConfig.shortName,
+        url: siteConfig.url,
+        description: siteConfig.description,
+        inLanguage: 'pt-BR',
+        publisher: { '@id': `${siteConfig.url}/#organization` },
+      },
+      {
+        '@type': 'Organization',
+        '@id': `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        sameAs: [siteConfig.instagram],
+      },
+    ],
   }
 
   return (
     <html lang="pt-BR" className={`light ${sourceSans.variable} ${fraunces.variable} bg-background`}>
       <body className="min-h-screen font-sans antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <a href="#conteudo-principal" className="skip-link">Ir para o conteúdo principal</a>
         <SiteHeader />
-        {children}
+        <div id="conteudo-principal">{children}</div>
         <SiteFooter />
         {process.env.NODE_ENV === 'production' &&
           process.env.NEXT_PUBLIC_DEPLOY_TARGET !== 'github-pages' && (

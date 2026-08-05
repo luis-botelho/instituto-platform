@@ -100,6 +100,21 @@
   button, a {
     @apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring;
   }
+  .skip-link {
+    @apply fixed left-4 top-3 z-[100] -translate-y-24 rounded-lg bg-foreground px-4 py-3 font-semibold text-background shadow-lg transition-transform focus:translate-y-0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 @media print {

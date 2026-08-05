@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Participar',
   description:
     'Cadastre sua iniciativa, indique lugares e histórias ou proponha experiências. O território de Mambucaba é construído por quem o vive.',
+  alternates: { canonical: '/participar' },
 }
 
 const PASSOS = [

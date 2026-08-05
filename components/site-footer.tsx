@@ -14,12 +14,12 @@ export function SiteFooter() {
             </span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-primary-foreground/80">
-            Uma plataforma territorial de descoberta, conexão e construção de
-            experiências. Um programa do Observatório Mambucaba, primeiro núcleo
-            do ICPT — Instituto Cidadania e Políticas Territoriais.
+            Plataforma territorial e comunitária que conecta cultura, natureza,
+            gastronomia, experiências, dados e participação. Uma iniciativa ligada
+            ao Observatório Mambucaba e ao ICPT.
           </p>
           <p className="mt-6 font-serif text-base italic text-primary-foreground/90">
-            &ldquo;O território começa por quem o vive.&rdquo;
+            &ldquo;Território, comunidade e experiências.&rdquo;
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export function SiteFooter() {
       <div className="border-t border-primary-foreground/15">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-4 py-6 text-xs text-primary-foreground/70 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>© {new Date().getFullYear()} Caminhos de Mambucaba · Observatório Mambucaba / ICPT</p>
-          <p>Conteúdo demonstrativo — protótipo em construção.</p>
+          <p>Um percurso nasce na serra, atravessa o território e encontra o mar.</p>
         </div>
       </div>
     </footer>

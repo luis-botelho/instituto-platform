@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Mapa Territorial',
   description:
     'O catálogo público do território: onde comer, se hospedar, o que conhecer e fazer, e serviços de apoio.',
+  alternates: { canonical: '/mapa' },
 }
 
 export default function MapaPage() {
