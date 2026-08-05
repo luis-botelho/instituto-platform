@@ -1,8 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Source_Sans_3, Fraunces } from 'next/font/google'
-import { SiteHeader } from '@/components/site-header'
-import { SiteFooter } from '@/components/site-footer'
+import { SiteChrome } from '@/components/site-chrome'
 import { siteConfig } from '@/lib/site-config'
 import './globals.css'
 
@@ -85,9 +84,7 @@ export default function RootLayout({
       <body className="min-h-screen font-sans antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <a href="#conteudo-principal" className="skip-link">Ir para o conteúdo principal</a>
-        <SiteHeader />
-        <div id="conteudo-principal">{children}</div>
-        <SiteFooter />
+        <SiteChrome>{children}</SiteChrome>
         {process.env.NODE_ENV === 'production' &&
           process.env.NEXT_PUBLIC_DEPLOY_TARGET !== 'github-pages' && (
             <Analytics />
