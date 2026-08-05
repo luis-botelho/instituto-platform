@@ -48,7 +48,7 @@ const destinations = [
 
 export default function HomePage() {
   return (
-    <main className="relative isolate min-h-[calc(100svh-4rem)] overflow-hidden bg-[#f3efe5] text-[#203128]">
+    <main className="relative isolate min-h-svh overflow-hidden bg-[#f3efe5] text-[#203128]">
       <div className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle_at_12%_8%,rgba(193,98,47,.13),transparent_28%),radial-gradient(circle_at_88%_4%,rgba(63,107,74,.18),transparent_30%),linear-gradient(180deg,#f7f3e9_0%,#eee8da_100%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-30 [background-image:linear-gradient(rgba(42,69,53,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(42,69,53,.08)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_75%)]" />
 
