@@ -7,6 +7,7 @@ import { Search, Phone, Globe, Clock, Accessibility, ArrowRight } from 'lucide-r
 import {
   PONTOS,
   CATEGORIAS,
+  isContactDemonstrativo,
   type Categoria,
 } from '@/lib/data'
 import { StatusBadge } from '@/components/status-badge'
@@ -170,7 +171,7 @@ export function MapExplorer({ compact = false }: { compact?: boolean }) {
                   )}
                 </div>
                 <div className="mt-3 flex flex-wrap items-center gap-3">
-                  {p.whatsapp && (
+                  {p.whatsapp && !isContactDemonstrativo(p.whatsapp) && (
                     <a
                       href={p.whatsapp}
                       target="_blank"
@@ -180,7 +181,7 @@ export function MapExplorer({ compact = false }: { compact?: boolean }) {
                       <Phone className="size-3.5" /> WhatsApp
                     </a>
                   )}
-                  {p.site && (
+                  {p.site && !isContactDemonstrativo(p.site) && (
                     <a
                       href={p.site}
                       target="_blank"

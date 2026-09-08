@@ -19,13 +19,20 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-brand: var(--accent-brand);
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-river: var(--river);
+  --color-river-brand: var(--river-brand);
   --color-river-foreground: var(--river-foreground);
   --color-sand: var(--sand);
+  --color-sand-foreground: var(--sand-foreground);
+  --color-territorio: var(--cdm-verde-territorio);
+  --color-mata: var(--cdm-verde-mata);
+  --color-serra: var(--cdm-azul-serra);
+  --color-agua: var(--cdm-azul-agua);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -37,54 +44,74 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-card: var(--shadow-card);
+  --content-max: var(--content-max);
+  --section-space: var(--section-space);
 }
 
 :root {
   color-scheme: light;
-  --radius: 0.75rem;
+  --radius: 0.875rem;
 
-  /* areia / branco quente */
-  --background: oklch(0.968 0.012 85);
-  /* grafite */
-  --foreground: oklch(0.27 0.012 250);
+  /* Primitivos oficiais — Caminhos de Mambucaba v2 */
+  --cdm-verde-territorio: #0e4a30;
+  --cdm-verde-mata: #153f2b;
+  --cdm-verde-musgo: #668b49;
+  --cdm-azul-serra: #315d76;
+  --cdm-azul-agua: #4d8fb9;
+  --cdm-terracota: #b86540;
+  --cdm-creme: #f6f0e4;
+  --cdm-branco-quente: #fff9ef;
+  --cdm-cinza: #4c5a54;
 
-  --card: oklch(0.995 0.006 85);
-  --card-foreground: oklch(0.27 0.012 250);
+  /* Variação funcional derivada para texto branco com contraste AA */
+  --cdm-terracota-acao: #a65334;
 
-  --popover: oklch(0.995 0.006 85);
-  --popover-foreground: oklch(0.27 0.012 250);
+  /* Tipografia */
+  --cdm-fonte-titulo: 'Libre Baskerville', Georgia, serif;
+  --cdm-fonte-interface: 'Source Sans 3', Arial, sans-serif;
 
-  /* verde floresta */
-  --primary: oklch(0.44 0.078 155);
-  --primary-foreground: oklch(0.98 0.01 85);
+  /* Tokens semânticos */
+  --background: #f6f0e4;
+  --foreground: #153f2b;
+  --card: #fff9ef;
+  --card-foreground: #153f2b;
+  --popover: #fff9ef;
+  --popover-foreground: #153f2b;
+  --primary: #0e4a30;
+  --primary-foreground: #fff9ef;
+  --secondary: #e4e7dc;
+  --secondary-foreground: #153f2b;
+  --muted: #ebe6da;
+  --muted-foreground: #4c5a54;
+  --accent-brand: #b86540;
+  --accent: #a65334;
+  --accent-foreground: #fff9ef;
+  --river-brand: #4d8fb9;
+  --river: #315d76;
+  --river-foreground: #fff9ef;
+  --sand: #ded8c7;
+  --sand-foreground: #153f2b;
+  --border: #cbd0c2;
+  --input: #bfc7b9;
+  --ring: #315d76;
+  --destructive: #a43232;
+  --destructive-foreground: #fff9ef;
 
-  /* areia mais saturada */
-  --secondary: oklch(0.91 0.032 82);
-  --secondary-foreground: oklch(0.35 0.03 90);
+  --chart-1: #0e4a30;
+  --chart-2: #315d76;
+  --chart-3: #a65334;
+  --chart-4: #4d8fb9;
+  --chart-5: #668b49;
 
-  --muted: oklch(0.93 0.018 85);
-  --muted-foreground: oklch(0.48 0.02 120);
-
-  /* terracota / laranja queimado */
-  --accent: oklch(0.63 0.145 47);
-  --accent-foreground: oklch(0.99 0.01 85);
-
-  /* azul de rio e mar */
-  --river: oklch(0.55 0.09 230);
-  --river-foreground: oklch(0.98 0.01 85);
-
-  --sand: oklch(0.88 0.04 80);
-
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.85 0.02 85);
-  --input: oklch(0.85 0.02 85);
-  --ring: oklch(0.44 0.078 155);
-
-  --chart-1: oklch(0.44 0.078 155);
-  --chart-2: oklch(0.55 0.09 230);
-  --chart-3: oklch(0.63 0.145 47);
-  --chart-4: oklch(0.72 0.11 85);
-  --chart-5: oklch(0.5 0.06 160);
+  /* Forma, elevação e layout */
+  --radius-card: 1.25rem;
+  --radius-feature: 2rem;
+  --shadow-soft: 0 18px 45px -30px rgb(21 63 43 / 45%);
+  --shadow-card: 0 24px 60px -36px rgb(14 74 48 / 42%);
+  --content-max: 72rem;
+  --section-space: clamp(4rem, 8vw, 7rem);
 }
 
 @layer base {

@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { ExternalLink, Menu, X } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/data'
 import { BrandMark } from '@/components/brand-mark'
 import { cn } from '@/lib/utils'
+import { withBasePath } from '@/lib/paths'
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
@@ -20,16 +22,28 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link
           href="/"
-          className="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          className="flex items-center rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           onClick={() => setOpen(false)}
         >
-          <BrandMark />
-          <span className="flex flex-col leading-none">
-            <span className="font-serif text-base font-semibold tracking-tight text-foreground">
-              Caminhos
-            </span>
-            <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              de Mambucaba
+          {/* logo horizontal — desktop */}
+          <Image
+            src={withBasePath('/brand/caminhos/logo-horizontal.svg')}
+            alt="Caminhos de Mambucaba"
+            width={176}
+            height={64}
+            priority
+            className="hidden h-11 w-auto lg:block"
+          />
+          {/* símbolo oficial + nome acessível — mobile */}
+          <span className="flex items-center gap-2.5 lg:hidden">
+            <BrandMark alt="" />
+            <span className="flex flex-col leading-none">
+              <span className="font-serif text-base font-semibold tracking-tight text-foreground">
+                Caminhos
+              </span>
+              <span className="text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                de Mambucaba
+              </span>
             </span>
           </span>
         </Link>
@@ -38,19 +52,37 @@ export function SiteHeader() {
         <nav aria-label="Navegação principal" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    'rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-secondary-foreground',
-                    isActive(link.href)
-                      ? 'text-primary'
-                      : 'text-muted-foreground',
-                  )}
-                  aria-current={isActive(link.href) ? 'page' : undefined}
-                >
-                  {link.label}
-                </Link>
+              <li key={link.href} className="relative">
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${link.label} (abre em nova aba)`}
+                    className="flex min-h-11 items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-secondary-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  >
+                    {link.label} <ExternalLink className="size-3.5" />
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-secondary-foreground',
+                      isActive(link.href)
+                        ? 'text-primary'
+                        : 'text-muted-foreground',
+                    )}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+                {isActive(link.href) && (
+                  <span
+                    className="absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-primary"
+                    aria-hidden="true"
+                  />
+                )}
               </li>
             ))}
           </ul>
@@ -58,7 +90,7 @@ export function SiteHeader() {
 
         <Link
           href="/monte-seu-caminho"
-          className="hidden shrink-0 items-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 lg:inline-flex"
+          className="hidden min-h-11 shrink-0 items-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-accent-foreground transition-colors hover:bg-accent/90 lg:inline-flex"
         >
           Monte seu Caminho
         </Link>
@@ -86,17 +118,32 @@ export function SiteHeader() {
           <ul className="mx-auto flex w-full max-w-6xl flex-col px-4 py-3 sm:px-6">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    'block rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-secondary',
-                    isActive(link.href) ? 'text-primary' : 'text-foreground',
-                  )}
-                  aria-current={isActive(link.href) ? 'page' : undefined}
-                >
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    aria-label={`${link.label} (abre em nova aba)`}
+                    className="flex items-center gap-2 rounded-lg px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  >
+                    {link.label} <ExternalLink className="size-4" />
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={cn(
+                      'block rounded-lg px-3 py-3 text-base font-medium transition-colors hover:bg-secondary',
+                      isActive(link.href)
+                        ? 'font-semibold text-primary underline decoration-primary/50 decoration-2 underline-offset-4'
+                        : 'text-foreground',
+                    )}
+                    aria-current={isActive(link.href) ? 'page' : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
             <li className="mt-2">

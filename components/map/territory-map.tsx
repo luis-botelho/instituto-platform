@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from 'react-leaflet'
 import { useEffect } from 'react'
 import 'leaflet/dist/leaflet.css'
-import { CATEGORIAS, STATUS_LABEL, type Ponto } from '@/lib/data'
+import { CATEGORIAS, STATUS_LABEL, isContactDemonstrativo, type Ponto } from '@/lib/data'
 
 // Ajusta os limites do mapa aos pontos visíveis.
 function FitBounds({ pontos }: { pontos: Ponto[] }) {
@@ -71,7 +71,7 @@ export default function TerritoryMap({ pontos }: { pontos: Ponto[] }) {
                   </p>
                 )}
                 <div className="mt-2 flex flex-wrap gap-2">
-                  {p.whatsapp && (
+                  {p.whatsapp && !isContactDemonstrativo(p.whatsapp) && (
                     <a
                       href={p.whatsapp}
                       target="_blank"
@@ -81,7 +81,7 @@ export default function TerritoryMap({ pontos }: { pontos: Ponto[] }) {
                       WhatsApp
                     </a>
                   )}
-                  {p.instagram && (
+                  {p.instagram && !isContactDemonstrativo(p.instagram) && (
                     <a
                       href={p.instagram}
                       target="_blank"
@@ -91,7 +91,7 @@ export default function TerritoryMap({ pontos }: { pontos: Ponto[] }) {
                       Instagram
                     </a>
                   )}
-                  {p.site && (
+                  {p.site && !isContactDemonstrativo(p.site) && (
                     <a
                       href={p.site}
                       target="_blank"

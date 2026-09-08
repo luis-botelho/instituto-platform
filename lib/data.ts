@@ -4,15 +4,19 @@
 // Não representa informações reais ou verificadas.
 // ============================================================================
 
-export const NAV_LINKS = [
+import { OBSERVATORIO_SITE_URL } from './site-config'
+
+export type NavLink = { href: string; label: string; external?: boolean }
+
+export const NAV_LINKS: NavLink[] = [
   { href: '/', label: 'Início' },
   { href: '/conhecer', label: 'O Programa' },
   { href: '/visitar', label: 'Visitar' },
   { href: '/mapa', label: 'Mapa' },
   { href: '/hospedar', label: 'Hospedar' },
   { href: '/participar', label: 'Participar' },
-  { href: '/observatorio', label: 'Observatório' },
-] as const
+  { href: OBSERVATORIO_SITE_URL, label: 'Observatório', external: true },
+]
 
 // ----------------------------------------------------------------------------
 // Os quatro caminhos (públicos)
@@ -87,7 +91,7 @@ export const CAMINHOS: Caminho[] = [
       'Dialogar com o Observatório',
     ],
     cor: 'sand',
-    href: '/observatorio',
+    href: OBSERVATORIO_SITE_URL,
   },
 ]
 
@@ -106,11 +110,31 @@ export const CATEGORIAS: Record<
   Categoria,
   { label: string; descricao: string; cor: string }
 > = {
-  comer: { label: 'Onde comer', descricao: 'Gastronomia e sabores locais', cor: '#c1622f' },
-  hospedar: { label: 'Onde se hospedar', descricao: 'Pousadas e hospedagens', cor: '#4477aa' },
-  conhecer: { label: 'O que conhecer', descricao: 'Patrimônio, história e paisagens', cor: '#3f6b4a' },
-  fazer: { label: 'O que fazer', descricao: 'Atividades e experiências', cor: '#8a6d2b' },
-  servicos: { label: 'Serviços e apoio', descricao: 'Apoio ao visitante e ao morador', cor: '#5b5b62' },
+  comer: { label: 'Onde comer', descricao: 'Gastronomia e sabores locais', cor: '#b86540' },
+  hospedar: { label: 'Onde se hospedar', descricao: 'Pousadas e hospedagens', cor: '#315d76' },
+  conhecer: { label: 'O que conhecer', descricao: 'Patrimônio, história e paisagens', cor: '#0e4a30' },
+  fazer: { label: 'O que fazer', descricao: 'Atividades e experiências', cor: '#668b49' },
+  servicos: { label: 'Serviços e apoio', descricao: 'Apoio ao visitante e ao morador', cor: '#4c5a54' },
+}
+
+// ----------------------------------------------------------------------------
+// Guarda de contatos demonstrativos
+// Enquanto o conteúdo estiver em validação, URLs fictícias não podem virar
+// links acionáveis na interface.
+// ----------------------------------------------------------------------------
+
+const URLS_DEMONSTRATIVAS = [
+  'https://wa.me/5500000000000',
+  'tel:+5500000000000',
+  'https://exemplo.com',
+]
+
+export function isContactDemonstrativo(url?: string): boolean {
+  if (!url) return false
+  if (URLS_DEMONSTRATIVAS.includes(url)) return true
+  const semBarra = url.replace(/\/+$/, '')
+  if (semBarra === 'https://instagram.com') return true
+  return false
 }
 
 // ----------------------------------------------------------------------------

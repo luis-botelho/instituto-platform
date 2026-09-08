@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Building2, Eye, Handshake, Map, Target } from 'lucide-react'
+import { ArrowRight, Building2, ExternalLink, Eye, Handshake, Map, Target } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
+import { OBSERVATORIO_SITE_URL } from '@/lib/site-config'
 
 export const metadata: Metadata = {
   title: 'Instituto ICPT',
@@ -40,9 +41,15 @@ export default function InstitutoPage() {
           <Link href="/caminhos" className="rounded-full bg-accent px-5 py-3 font-semibold text-accent-foreground">
             Conhecer o Caminhos
           </Link>
-          <Link href="/observatorio" className="rounded-full border border-border bg-background px-5 py-3 font-semibold">
-            Abrir o Observatório
-          </Link>
+          <a
+            href={OBSERVATORIO_SITE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir o Observatório Mambucaba (abre em nova aba)"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+          >
+            Abrir o Observatório <ExternalLink className="size-4" />
+          </a>
         </div>
       </PageHero>
 

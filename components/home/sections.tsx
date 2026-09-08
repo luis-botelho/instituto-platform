@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Search, Compass } from 'lucide-react'
+import { ArrowRight, ExternalLink, Search, Compass } from 'lucide-react'
 import { CAMINHOS, EXPERIENCIAS } from '@/lib/data'
 import { CaminhoCard } from '@/components/caminho-card'
 import { ExperienceCard } from '@/components/experience-card'
+import { OBSERVATORIO_SITE_URL } from '@/lib/site-config'
 import { withBasePath } from '@/lib/paths'
 
 /** Diferença em relação ao Google */
@@ -232,19 +233,21 @@ export function ParticiparObservatorioSection() {
       </div>
       <div className="flex flex-col rounded-2xl border border-border bg-card p-8">
         <h2 className="font-serif text-2xl font-semibold text-foreground">
-          Observatório Mambucaba
+          Políticas públicas e participação cidadã
         </h2>
         <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">
-          A Central de Inteligência Territorial que produz pesquisas, escutas,
-          indicadores e diagnósticos. O Observatório transforma conhecimento em
-          capacidade de ação.
+          Pesquisas, dados públicos e demandas territoriais são desenvolvidos pelo
+          Observatório Mambucaba.
         </p>
-        <Link
-          href="/observatorio"
-          className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
+        <a
+          href={OBSERVATORIO_SITE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Conhecer o Observatório Mambucaba (abre em nova aba)"
+          className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
         >
-          Conhecer o Observatório <ArrowRight className="size-4" />
-        </Link>
+          Conhecer o Observatório <ExternalLink className="size-4" />
+        </a>
       </div>
     </section>
   )

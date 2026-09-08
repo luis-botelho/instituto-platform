@@ -5,7 +5,7 @@ import { BedDouble, MapPin, ArrowRight } from 'lucide-react'
 import { PageHero } from '@/components/page-hero'
 import { StatusBadge } from '@/components/status-badge'
 import { Button } from '@/components/ui/button'
-import { HOSPEDAGENS } from '@/lib/data'
+import { HOSPEDAGENS, isContactDemonstrativo } from '@/lib/data'
 import { withBasePath } from '@/lib/paths'
 
 export const metadata: Metadata = {
@@ -101,15 +101,17 @@ export default function HospedarPage() {
                     </span>
                     <div className="flex items-center justify-between gap-3">
                       <StatusBadge status={h.status} />
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="rounded-full border-river/40 text-river hover:bg-river/10 hover:text-river"
-                      >
-                        <a href={h.contato} target="_blank" rel="noopener noreferrer">
-                          Contato
-                        </a>
-                      </Button>
+                      {!isContactDemonstrativo(h.contato) && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-full border-river/40 text-river hover:bg-river/10 hover:text-river"
+                        >
+                          <a href={h.contato} target="_blank" rel="noopener noreferrer">
+                            Contato
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </article>
