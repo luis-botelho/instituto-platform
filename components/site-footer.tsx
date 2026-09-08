@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import { ExternalLink } from 'lucide-react'
 import { NAV_LINKS } from '@/lib/data'
-import { BrandMark } from '@/components/brand-mark'
+import { withBasePath } from '@/lib/paths'
 
 export function SiteFooter() {
   return (
@@ -8,10 +10,13 @@ export function SiteFooter() {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-2.5">
-            <BrandMark className="h-10 w-10" />
-            <span className="font-serif text-lg font-semibold">
-              Caminhos de Mambucaba
-            </span>
+            <Image
+              src={withBasePath('/brand/caminhos/logo-horizontal-negativo.svg')}
+              alt="Caminhos de Mambucaba"
+              width={208}
+              height={76}
+              className="h-12 w-auto"
+            />
           </div>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-primary-foreground/80">
             Plataforma territorial e comunitária que conecta cultura, natureza,
@@ -30,12 +35,24 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-2.5">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-primary-foreground/85 underline-offset-4 hover:underline"
-                >
-                  {link.label}
-                </Link>
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${link.label} (abre em nova aba)`}
+                    className="inline-flex items-center gap-1.5 text-sm text-primary-foreground/85 underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+                  >
+                    {link.label} <ExternalLink className="size-3.5" />
+                  </a>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="text-sm text-primary-foreground/85 underline-offset-4 hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

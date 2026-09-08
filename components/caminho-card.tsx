@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
 import type { Caminho } from '@/lib/data'
 import { cn } from '@/lib/utils'
 
@@ -11,15 +11,15 @@ const ACCENT: Record<Caminho['cor'], string> = {
 }
 
 export function CaminhoCard({ caminho }: { caminho: Caminho }) {
-  return (
-    <Link
-      href={caminho.href}
-      className={cn(
-        'group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-lg',
-        'before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:content-[""]',
-        ACCENT[caminho.cor],
-      )}
-    >
+  const external = caminho.href.startsWith('http')
+  const classes = cn(
+    'group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-lg',
+    'before:absolute before:inset-x-0 before:top-0 before:h-1.5 before:content-[""]',
+    external && 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
+    ACCENT[caminho.cor],
+  )
+  const content = (
+    <>
       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         {caminho.chamada}
       </p>
@@ -44,8 +44,29 @@ export function CaminhoCard({ caminho }: { caminho: Caminho }) {
         ))}
       </ul>
       <span className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary transition-all group-hover:gap-2">
-        Seguir este caminho <ArrowRight className="size-4" />
+        {external ? 'Acessar o Observatório' : 'Seguir este caminho'}{' '}
+        {external ? <ExternalLink className="size-4" /> : <ArrowRight className="size-4" />}
       </span>
+    </>
+  )
+
+  if (external) {
+    return (
+      <a
+        href={caminho.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${caminho.titulo}: Acessar o Observatório (abre em nova aba)`}
+        className={classes}
+      >
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <Link href={caminho.href} className={classes}>
+      {content}
     </Link>
   )
 }

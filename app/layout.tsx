@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Source_Sans_3, Fraunces } from 'next/font/google'
+import { Source_Sans_3, Libre_Baskerville } from 'next/font/google'
 import { SiteChrome } from '@/components/site-chrome'
 import { siteConfig } from '@/lib/site-config'
 import './globals.css'
@@ -11,8 +11,9 @@ const sourceSans = Source_Sans_3({
   display: 'swap',
 })
 
-const fraunces = Fraunces({
+const libreBaskerville = Libre_Baskerville({
   subsets: ['latin'],
+  weight: ['400', '700'],
   variable: '--font-serif',
   display: 'swap',
 })
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#3f6b4a',
+  themeColor: '#0E4A30',
   width: 'device-width',
   initialScale: 1,
 }
@@ -80,7 +81,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="pt-BR" className={`light ${sourceSans.variable} ${fraunces.variable} bg-background`}>
+    <html lang="pt-BR" className={`light ${sourceSans.variable} ${libreBaskerville.variable} bg-background`}>
       <body className="min-h-screen font-sans antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <a href="#conteudo-principal" className="skip-link">Ir para o conteúdo principal</a>

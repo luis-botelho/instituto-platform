@@ -4,6 +4,9 @@ export const siteConfig = {
   url: 'https://caminhosdemambucaba.live',
   description:
     'Plataforma territorial de Mambucaba para descobrir experiências, participar do mapeamento e acompanhar dados, pesquisas e demandas comunitárias.',
-  locale: 'pt_BR',
+locale: 'pt_BR',
   instagram: 'https://www.instagram.com/caminhos.mambucaba',
 } as const
+
+export const OBSERVATORIO_SITE_URL = 'https://observatoriomambucaba.com.br/observatorio-mambucaba/'
+export const OBSERVATORIO_INSTAGRAM_URL = 'https://www.instagram.com/observatoriomambucaba/'

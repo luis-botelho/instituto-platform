@@ -14,7 +14,7 @@ export function HomeHero() {
         sizes="100vw"
         className="-z-10 object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-primary/95 via-primary/70 to-primary/40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-mata/95 via-primary/75 to-primary/45" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-col px-4 py-20 sm:px-6 md:py-28 lg:py-36">
         <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-background/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground ring-1 ring-inset ring-background/25">
